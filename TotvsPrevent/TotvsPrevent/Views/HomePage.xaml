@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:viewModels="clr-namespace:TotvsPrevent.ViewModels;assembly=TotvsPrevent"
+             x:Class="TotvsPrevent.Views.HomePage"
+             Title="Totvs Prevent" BackgroundColor="#3e3835">
+
+    <ContentPage.BindingContext>
+        <viewModels:ModuloViewModel/>
+    </ContentPage.BindingContext>
+    <ListView  x:Name="Modulo" ItemsSource="{Binding Modulo}"
+           HasUnevenRows="True"
+           BackgroundColor="#ecf0f1"
+           ItemTapped="ListView_ItemTapped"
+           >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout
+                            BackgroundColor="White"  Margin="8">
+                        <Label Text="{Binding Servico}"
+                               Margin="8"
+                               FontAttributes="Bold"
+                               FontSize="Medium" />
+                        <Label Text="{Binding Nome}"
+                               Margin="8,2,8,4"
+                               FontSize="Micro" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

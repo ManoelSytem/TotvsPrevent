@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:TotvsPrevent.ViewModels"
+             mc:Ignorable="d"
+             x:Class="TotvsPrevent.Views.LoginPage">
+    
+    <ContentPage.BindingContext>
+        <viewModels:LoginViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout x:Name="MasterLayout">
+        <StackLayout x:Name="LoginStack" VerticalOptions="FillAndExpand">
+            <AbsoluteLayout>
+                <Image x:Name="LoginIncon" Source="{Binding Icon}"   AbsoluteLayout.LayoutBounds="115,150,100,100"   />
+            </AbsoluteLayout>
+        </StackLayout>
+        <StackLayout x:Name="LoginEntryStack" VerticalOptions="StartAndExpand">
+            <StackLayout.Padding>
+                <OnIdiom x:TypeArguments="Thickness">
+                </OnIdiom>
+            </StackLayout.Padding>
+
+            <ActivityIndicator x:Name="ActivitySpinner"  Color="Red" IsRunning="True"/>
+            <Label x:Name="lblInfo"
+                     Text=""
+                     Font="Micro" 
+                     FontSize="14"
+                     TextColor="#ffffff"/>
+            <Label x:Name="Lbl_Login"   Text="Login" />
+            <Entry Text="{Binding Username}" x:Name="Entry_Login" Placeholder="Login"/>
+            <Label x:Name="Lbl_Senha" Text="Senha" />
+            <Entry Text="{Binding Password}" x:Name="Entry_Senha"  IsPassword="true" Placeholder="Senha"/>
+            <Button 
+                    Clicked="EntrarProcedure"
+                    Text="Entrar"
+                    BackgroundColor="DodgerBlue"
+                    TextColor="White"
+                    FontSize="30"
+                     />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
