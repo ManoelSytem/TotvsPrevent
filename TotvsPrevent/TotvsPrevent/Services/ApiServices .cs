@@ -10,7 +10,7 @@ namespace TotvsPrevent.Services
 {
     public class ApiServices
     {
-        public async Task<string> LoginAsync(string username, string password)
+        public async static Task<string> LoginAsync(string username, string password)
         {
 
             var keyValues = new List<KeyValuePair<string, string>>
@@ -30,8 +30,8 @@ namespace TotvsPrevent.Services
             var response = await client.SendAsync(request);
             var jwt = await response.Content.ReadAsStringAsync();
 
-            JObject jwtDnamic = JsonConvert.DeserializeObject<dynamic>(jwt);
-            var accessToken = jwtDnamic.Value<string>("access_token");
+            var jwtDnamic = JsonConvert.DeserializeObject<Object>(jwt);
+            var accessToken = jwtDnamic.ToString();
 
             return accessToken;
         }

@@ -8,6 +8,7 @@ using TotvsPrevent.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using static Android.Provider.ContactsContract;
+using static Android.Provider.SyncStateContract;
 
 namespace TotvsPrevent.Views
 {
@@ -22,11 +23,7 @@ namespace TotvsPrevent.Views
         private void Init()
         {
 
-            BackgroundColor = Contacts.BackgroundColor;
-            Lbl_Login.TextColor = Contacts.MainTextColor;
-            Lbl_Senha.TextColor = Constats.MainTextColor;
             ActivitySpinner.IsVisible = false;
-            LoginIncon.HeightRequest = Constats.LoginIconAltura;
             //Button_Entrar.Visibility = ViewStates.Gone;
             Entry_Login.Completed += (s, e) => Entry_Senha.Focus();
             Entry_Senha.Completed += (s, e) => EntrarProcedure(s, e);
@@ -41,7 +38,6 @@ namespace TotvsPrevent.Views
                 var accesstoken = await ApiServices.LoginAsync(Entry_Login.Text, Entry_Senha.Text);
                 if (!string.IsNullOrEmpty(accesstoken))
                 {
-                    Settings.Accesstoken = accesstoken;
                     await Navigation.PushModalAsync(new MainPage());
                 }
                 else

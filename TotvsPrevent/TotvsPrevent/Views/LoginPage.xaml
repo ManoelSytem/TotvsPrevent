@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:TotvsPrevent.ViewModels"
              mc:Ignorable="d"
-             x:Class="TotvsPrevent.Views.LoginPage">
+             x:Class="TotvsPrevent.Views.LoginPage" BackgroundColor="#3E3835">
     
     <ContentPage.BindingContext>
         <viewModels:LoginViewModel/>
