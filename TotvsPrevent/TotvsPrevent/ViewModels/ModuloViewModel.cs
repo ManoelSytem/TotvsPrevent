@@ -22,6 +22,18 @@ namespace TotvsPrevent.ViewModels
             Modulo = ModuloService.GetAll();
         }
 
-    
+
+        public Type ObterTypoPage(string modulo)
+        {
+            Type tipo = null;
+            foreach (Modulo mod in ModuloService.GetAll())
+            {
+                if (mod.Nome == modulo)
+                 return mod.TargetType;
+            }
+
+            return tipo;
+        }
+
     }
 }

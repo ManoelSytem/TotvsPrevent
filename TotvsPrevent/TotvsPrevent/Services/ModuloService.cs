@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using TotvsPrevent.Models;
+using TotvsPrevent.Views.Finaceiro;
 
 namespace TotvsPrevent.Services
 {
@@ -24,6 +25,7 @@ namespace TotvsPrevent.Services
                 Servico = "Prothues",
                 Nome = "Finaceiro",
                 Descricao = "Finaceiro",
+                TargetType = typeof(FinaceiraViewPage)
             });
 
             ListModulo.Add(new Modulo()

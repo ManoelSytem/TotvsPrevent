@@ -5,28 +5,32 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:viewModels="clr-namespace:TotvsPrevent.ViewModels;assembly=TotvsPrevent"
-             x:Class="TotvsPrevent.Views.HomePage"
-             Title="Totvs Prevent" BackgroundColor="#3e3835">
-
+             x:Class="TotvsPrevent.Views.Finaceiro.ContaPagarPage" Title="Contas a pagar">
+   
+    
     <ContentPage.BindingContext>
-        <viewModels:ModuloViewModel/>
+        <viewModels:CaixaViewModel/>
     </ContentPage.BindingContext>
-    <ListView  x:Name="Modulo" ItemsSource="{Binding Modulo}"
+    <ListView  x:Name="ListViewContaApagar" ItemsSource="{Binding Caixa}"
            HasUnevenRows="True"
            BackgroundColor="#ecf0f1"
-           ItemSelected="ModuloSelected" >
-        <ListView.ItemTemplate  >
+           ItemTapped="ListView_ItemTapped"
+           >
+        <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
                     <StackLayout
                             BackgroundColor="White"  Margin="8">
-                        <Label Text="{Binding Servico}"
+                        <Label Text="{Binding Departamento}"
                                Margin="8"
                                FontAttributes="Bold"
-                               FontSize="Medium" />
-                        <Label Text="{Binding Nome}"
+                               FontSize="Large" />
+                        <Label Text="Total:"
                                Margin="8,2,8,4"
                                FontSize="Micro" />
+                        <Label Text="{Binding Valor}"
+                               Margin="8,2,8,4"
+                               FontSize="Small" />
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>

@@ -17,6 +17,7 @@ namespace TotvsPrevent.Views
         public HomePage()
         {
             InitializeComponent();
+
         }
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -24,6 +25,22 @@ namespace TotvsPrevent.Views
 
             var vm = BindingContext as ModuloViewModel;
             md = e.Item as Modulo;
+        }
+
+        private async void ModuloSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = (Modulo)e.SelectedItem;
+            Type pagina = item.TargetType;
+
+            if (pagina == null)
+            {
+               
+                return ;
+            }
+            else
+            {
+                await Navigation.PushAsync((Page)Activator.CreateInstance(pagina),true);
+            }
            
         }
     }

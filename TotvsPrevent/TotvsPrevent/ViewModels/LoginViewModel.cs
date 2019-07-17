@@ -22,7 +22,7 @@ namespace TotvsPrevent.ViewModels
             }
             set
             {
-                SetProperty(ref i_con, value);
+                SetValue(ref i_con, value);
             }
         }
 
@@ -35,7 +35,7 @@ namespace TotvsPrevent.ViewModels
             }
             set
             {
-                SetProperty(ref _message, value);
+                SetValue(ref _message, value);
             }
         }
 

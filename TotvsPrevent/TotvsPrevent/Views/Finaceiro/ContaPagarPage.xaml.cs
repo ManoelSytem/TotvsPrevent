@@ -1,0 +1,28 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TotvsPrevent.Models;
+using TotvsPrevent.ViewModels;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace TotvsPrevent.Views.Finaceiro
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ContaPagarPage : ContentPage
+    {
+        public Caixa cax;
+        public ContaPagarPage()
+        {
+            InitializeComponent();
+        }
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var vm = BindingContext as CaixaViewModel;
+            cax = e.Item as Caixa;
+        }
+      
+    }
+}

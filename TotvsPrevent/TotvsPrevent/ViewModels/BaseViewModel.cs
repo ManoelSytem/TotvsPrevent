@@ -14,16 +14,14 @@ namespace TotvsPrevent.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs((propertyName)));
         }
 
-        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName]string propertyName = null)
+        protected void SetValue<T>(ref T storage, T value, [CallerMemberName]string propertyName = null)
         {
             if (EqualityComparer<T>.Default.Equals(storage, value))
             {
-                return false;
+                return;
             }
             storage = value;
             OnPropertyChanged(propertyName);
-
-            return true;
         }
     }
 }
