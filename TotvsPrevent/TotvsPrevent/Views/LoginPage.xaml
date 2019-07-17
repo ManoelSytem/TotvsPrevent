@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:TotvsPrevent.ViewModels"
              mc:Ignorable="d"
-             x:Class="TotvsPrevent.Views.LoginPage" BackgroundColor="#3E3835">
+             x:Class="TotvsPrevent.Views.LoginPage" BackgroundColor="#FFFFFF">
     
     <ContentPage.BindingContext>
         <viewModels:LoginViewModel/>
@@ -21,7 +21,6 @@
                 <OnIdiom x:TypeArguments="Thickness">
                 </OnIdiom>
             </StackLayout.Padding>
-
             <ActivityIndicator x:Name="ActivitySpinner"  Color="Red" IsRunning="True"/>
             <Label x:Name="lblInfo"
                      Text=""
@@ -35,9 +34,8 @@
             <Button 
                     Clicked="EntrarProcedure"
                     Text="Entrar"
-                    BackgroundColor="DodgerBlue"
                     TextColor="White"
-                    FontSize="30"
+                    FontSize="30" BackgroundColor="#1B1919"
                      />
         </StackLayout>
     </StackLayout>

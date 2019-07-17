@@ -21,8 +21,9 @@ namespace TotvsPrevent.Views
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+
             var vm = BindingContext as ModuloViewModel;
-             md = e.Item as Modulo;
+            md = e.Item as Modulo;
            
         }
     }

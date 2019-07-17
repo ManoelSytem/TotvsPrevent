@@ -18,6 +18,7 @@ namespace TotvsPrevent.Views
         public LoginPage()
         {
             InitializeComponent();
+            Init();
         }
 
         private void Init()
