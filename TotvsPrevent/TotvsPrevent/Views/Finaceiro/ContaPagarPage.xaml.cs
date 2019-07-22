@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TotvsPrevent.Models;
 using TotvsPrevent.ViewModels;
+using TotvsPrevent.Views.Fluig;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,6 +24,10 @@ namespace TotvsPrevent.Views.Finaceiro
             var vm = BindingContext as CaixaViewModel;
             cax = e.Item as Caixa;
         }
-      
+
+        private async void Selected(object sender, SelectedItemChangedEventArgs e)
+        {
+            await Navigation.PushAsync(new ColigadaViewPage(), true);
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace TotvsPrevent.ViewModels
 {
     public class CaixaViewModel : BaseViewModel
     {
-        private WebApiService apiService;
+        private ApiService apiService;
 
         private ContaApagarService contaApagarService;
 
@@ -27,17 +27,14 @@ namespace TotvsPrevent.ViewModels
         {
             //this.apiService = new WebApiService();
             //this.GetAllContaApagar();
-            contaApagarService = new ContaApagarService();
-
-            Caixa = new ObservableCollection<Caixa> { };
-            Caixa = contaApagarService.GetAll();
+            this.apiService  = new ApiService();
+            this.GetAllContaApagar();
 
         }
 
         private async void GetAllContaApagar()
         {
-            var response = await this.apiService.GetList<Caixa>("https://localhost:5001/", "/api", "/Finaceiro");
-
+            var response = await this.apiService.GetList<Caixa>("https://localhost:5001/", "/api", "/Finaceiro", "/GetTotalCaixa");
             if (!response.IsSuccess)
             {
                 await Application.Current.MainPage.DisplayAlert("Erro", response.Message, "ok"); ;

@@ -9,15 +9,15 @@ using TotvsPrevent.Models;
 namespace TotvsPrevent.Services
 {
     
-    public class WebApiService
+    public class ApiService
     {
-        public async Task<Response> GetList<T>(string urlBase, string preFix, string controller)
+        public async Task<Response> GetList<T>(string urlBase, string preFix, string controller, string action)
         {
             try
             {
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(urlBase);
-                var url = $"{preFix}{controller}";
+                var url = $"{preFix}{controller}{action}";
 
                 var response = await client.GetAsync(url);
                 var answer = await response.Content.ReadAsStringAsync();

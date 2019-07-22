@@ -22,22 +22,22 @@ namespace TotvsPrevent.Services
 
             ListModulo.Add(new Modulo()
             {
-                Servico = "Prothues",
-                Nome = "Finaceiro",
+                Servico = "Protheus",
+                Nome = "Financeiro",
                 Descricao = "Finaceiro",
                 TargetType = typeof(FinaceiraViewPage)
             });
 
             ListModulo.Add(new Modulo()
             {
-                Servico = "Prothues",
+                Servico = "Protheus",
                 Nome = "Fiscal",
                 Descricao = "Fiscal",
             });
 
             ListModulo.Add(new Modulo()
             {
-                Servico = "Prothues",
+                Servico = "Protheus",
                 Nome = "Faturamento",
                 Descricao = "Faturamento",
             });

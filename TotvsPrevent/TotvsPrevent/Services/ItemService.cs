@@ -19,7 +19,7 @@ namespace TotvsPrevent.Services
             // o icone do lado esquerdo e a pagina que vamos abrir
             var HomeView = new MasterPageItem() { Title = "Início", Icon = ImageSource.FromResource("TotvsPrevent.Resource.home_icon.png"), TargetType = typeof(HomePage) };
             var HomeRM = new MasterPageItem() { Title = "RM", Icon = ImageSource.FromResource("TotvsPrevent.Resource.logo.png"), TargetType = typeof(RmHomePage) };
-            var HomeProthues = new MasterPageItem() { Title = "Prothues", Icon = ImageSource.FromResource("TotvsPrevent.Resource.logo.png"), TargetType = typeof(HomePage) };
+            var HomeProthues = new MasterPageItem() { Title = "Protheus", Icon = ImageSource.FromResource("TotvsPrevent.Resource.logo.png"), TargetType = typeof(HomePage) };
 
             menuLista.Add(HomeView);
             menuLista.Add(HomeRM);

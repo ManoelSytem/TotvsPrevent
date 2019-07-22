@@ -18,17 +18,15 @@ namespace TotvsPrevent.Views
         public LoginPage()
         {
             InitializeComponent();
+            logoLogin.Source = ImageSource.FromResource("TotvsPrevent.Resource.logo.png");
             Init();
         }
 
         private void Init()
         {
-
-            ActivitySpinner.IsVisible = false;
             //Button_Entrar.Visibility = ViewStates.Gone;
             Entry_Login.Completed += (s, e) => Entry_Senha.Focus();
             Entry_Senha.Completed += (s, e) => EntrarProcedure(s, e);
-
         }
 
 
@@ -36,20 +34,23 @@ namespace TotvsPrevent.Views
         {
             try
             {
-                var accesstoken = await ApiServices.LoginAsync(Entry_Login.Text, Entry_Senha.Text);
+                ActivitySpinner.IsVisible = true;
+                string accesstoken = "";
+                //var accesstoken = await _apiService.LoginAsync(Entry_Login.Text, Entry_Senha.Text);
                 if (!string.IsNullOrEmpty(accesstoken))
                 {
+                    ActivitySpinner.IsVisible = false;
                     await Navigation.PushModalAsync(new MainPage());
                 }
                 else
                 {
+                    ActivitySpinner.IsVisible = false;
                     await DisplayAlert("Menssagem", "O nome do usuário ou senha está incorreto", "OK");
                     await Navigation.PushModalAsync(new MainPage());
                 }
             }
             catch (Exception)
             {
-                await DisplayAlert("Menssagem", "Erro Exception", "OK");
                 await Navigation.PushModalAsync(new MainPage());
             }
         }

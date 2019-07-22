@@ -14,8 +14,7 @@
     <ListView  x:Name="ListViewContaApagar" ItemsSource="{Binding Caixa}"
            HasUnevenRows="True"
            BackgroundColor="#ecf0f1"
-           ItemTapped="ListView_ItemTapped"
-           >
+            ItemSelected="Selected"  >
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

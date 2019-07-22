@@ -4,28 +4,27 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-                xmlns:viewModels="clr-namespace:TotvsPrevent.ViewModels;assembly=TotvsPrevent"
-             x:Class="TotvsPrevent.Views.Finaceiro.FinaceiraViewPage" Title="Financeiro">
-
-    <ContentPage.BindingContext>
-        <viewModels:FuncionalidadeViewModel/>
-    </ContentPage.BindingContext>
-    <ListView  x:Name="Funcionalidade" ItemsSource="{Binding Funcionalidade}"
+             x:Class="TotvsPrevent.Views.Fluig.ColigadaViewPage" Title="Coligada">
+ 
+    <ListView  x:Name="ListViewColigada"
            HasUnevenRows="True"
            BackgroundColor="#ecf0f1"
-            ItemSelected="FuncionalidadeSelected" >
+           >
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
                     <StackLayout
                             BackgroundColor="White"  Margin="8">
-                        <Label Text="{Binding Nome}"
+                        <Label Text="{Binding Departamento}"
                                Margin="8"
                                FontAttributes="Bold"
                                FontSize="Large" />
-                        <Label Text="{Binding Descricao}"
+                        <Label Text="Total:"
                                Margin="8,2,8,4"
-                               FontSize="Medium" />
+                               FontSize="Micro" />
+                        <Label Text="{Binding Valor}"
+                               Margin="8,2,8,4"
+                               FontSize="Small" />
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>

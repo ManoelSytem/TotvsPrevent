@@ -10,33 +10,56 @@
     <ContentPage.BindingContext>
         <viewModels:LoginViewModel/>
     </ContentPage.BindingContext>
-    <StackLayout x:Name="MasterLayout">
-        <StackLayout x:Name="LoginStack" VerticalOptions="FillAndExpand">
-            <AbsoluteLayout>
-                <Image x:Name="LoginIncon" Source="{Binding Icon}"   AbsoluteLayout.LayoutBounds="115,150,100,100"   />
-            </AbsoluteLayout>
-        </StackLayout>
-        <StackLayout x:Name="LoginEntryStack" VerticalOptions="StartAndExpand">
-            <StackLayout.Padding>
-                <OnIdiom x:TypeArguments="Thickness">
-                </OnIdiom>
-            </StackLayout.Padding>
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,10,0,0" Grid.Row="0">
+                <Label Text="Totvs Prevent"/>
+                <Image x:Name="logoLogin"  Opacity="0.6" VerticalOptions="Start" Margin="0,3,0,0"/>
+            </StackLayout>
             <ActivityIndicator x:Name="ActivitySpinner"  Color="Red" IsRunning="True"/>
-            <Label x:Name="lblInfo"
-                     Text=""
-                     Font="Micro" 
-                     FontSize="14"
-                     TextColor="#ffffff"/>
-            <Label x:Name="Lbl_Login"   Text="Login" />
-            <Entry Text="{Binding Username}" x:Name="Entry_Login" Placeholder="Login"/>
-            <Label x:Name="Lbl_Senha" Text="Senha" />
-            <Entry Text="{Binding Password}" x:Name="Entry_Senha"  IsPassword="true" Placeholder="Senha"/>
-            <Button 
-                    Clicked="EntrarProcedure"
-                    Text="Entrar"
-                    TextColor="White"
-                    FontSize="30" BackgroundColor="#1B1919"
-                     />
-        </StackLayout>
-    </StackLayout>
+            <Grid Grid.Row="1" Margin="20,0,20,0">
+
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+                <Image Source="logo.png" HeightRequest="70" VerticalOptions="EndAndExpand"/>
+                <Entry Text="{Binding Username}" x:Name="Entry_Login"  Grid.Row="1" Placeholder="Email" PlaceholderColor="#bababa" FontSize="16"/>
+                <Entry  Text="{Binding Password}" x:Name="Entry_Senha"  IsPassword="true" Grid.Row="2" Placeholder="Password" PlaceholderColor="#bababa" FontSize="16"/>
+                <Button Clicked="EntrarProcedure" Text="LogIn" BackgroundColor="#3897f0" TextColor="White" HeightRequest="50" VerticalOptions="Start" Grid.Row="3"/>
+                <Label Text="Login com problema? Obter ajuda." HorizontalOptions="Center" Grid.Row="4" Margin="0,10,0,0" FontSize="12"/>
+                <Grid Grid.Row="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label BackgroundColor="#bababa" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                    <!--<Label Text="" Grid.Column="1" VerticalOptions="Center" Margin="10,0,10,0"/>-->
+                    <Image Source="gmail.png" Grid.Column="1" VerticalOptions="Center" Margin="10,0,10,0"/>
+                    <Label BackgroundColor="#bababa" Grid.Column="2" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                </Grid>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Grid.Row="6">
+                    <Label Text="Login email" TextColor="#485992"  />
+                </StackLayout>
+            </Grid>
+            <StackLayout Grid.Row="2" BackgroundColor="#ffffff">
+                <Label HeightRequest="1" BackgroundColor="#e3e3e3"/>
+                <Label Text="Dont'Have Account Login? SignUp" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>
