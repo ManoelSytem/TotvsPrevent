@@ -8,20 +8,22 @@ namespace TotvsPrevent.Services
 {
     public class ContaApagarService
     {
-        private static ObservableCollection<Caixa> ListModulo { get; set; }
+        private static ObservableCollection<ContaAPaga> ListModulo { get; set; }
 
         public ContaApagarService()
         {
 
         }
 
-        public ObservableCollection<Caixa> GetAll()
+        public ObservableCollection<ContaAPaga> GetAll()
         {
-            ListModulo = new ObservableCollection<Caixa>();
+            ListModulo = new ObservableCollection<ContaAPaga>();
 
-            Caixa Caixa1 = new Caixa { filial = "01", Tipo = "Contas a Pagar", Valor = "R$ 9.850,00", Departamento = "Engenharia/Operações" };
-            Caixa Caixa2 = new Caixa { filial = "01", Tipo = "Contas a Pagar", Valor = "R$ 20.745,00", Departamento = "Limpeza" };
-            Caixa Caixa3 = new Caixa { filial = "01", Tipo = "Contas a Pagar", Valor = "R$ 40.745,00", Departamento = "Recursos Humanos" };
+            List<string> listTotais = new List<string>(new string[] { "R$ 9.850,00", "R$ 2.850,00", "R$ 7.850,00" });
+
+            ContaAPaga Caixa1 = new ContaAPaga { Empresa = "Universo Matriz", filial = "Capim Grosso 02", Total = listTotais };
+            ContaAPaga Caixa2 = new ContaAPaga { Empresa = "Constam", filial = "Feira de Santa 01", Total = listTotais };
+            ContaAPaga Caixa3 = new ContaAPaga { Empresa = "Universo Matriz", filial = "Nova Fatima 02", Total = listTotais };
 
             ListModulo.Add(Caixa1);
             ListModulo.Add(Caixa2);

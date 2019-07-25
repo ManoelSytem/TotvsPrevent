@@ -45,7 +45,6 @@ namespace TotvsPrevent.Views
                 else
                 {
                     ActivitySpinner.IsVisible = false;
-                    await DisplayAlert("Menssagem", "O nome do usuário ou senha está incorreto", "OK");
                     await Navigation.PushModalAsync(new MainPage());
                 }
             }

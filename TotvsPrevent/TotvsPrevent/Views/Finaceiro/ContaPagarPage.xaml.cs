@@ -14,15 +14,15 @@ namespace TotvsPrevent.Views.Finaceiro
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ContaPagarPage : ContentPage
     {
-        public Caixa cax;
+        public ContaAPaga cax;
         public ContaPagarPage()
         {
             InitializeComponent();
         }
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var vm = BindingContext as CaixaViewModel;
-            cax = e.Item as Caixa;
+            var vm = BindingContext as ContaApagarViewModel;
+            cax = e.Item as ContaAPaga;
         }
 
         private async void Selected(object sender, SelectedItemChangedEventArgs e)

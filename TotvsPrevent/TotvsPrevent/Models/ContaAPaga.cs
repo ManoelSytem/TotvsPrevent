@@ -4,11 +4,11 @@ using System.Text;
 
 namespace TotvsPrevent.Models
 {
-   public class Caixa
+   public class ContaAPaga
     {
-        public string Departamento { get; set; }
-        public string Valor { get; set; }
-        public string Tipo { get; set; }
+        public string Empresa  { get; set; }
         public string filial { get; set; }
+        public List<string> Total { get; set; }
+       
     }
 }

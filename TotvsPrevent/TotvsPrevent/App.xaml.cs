@@ -12,6 +12,9 @@ namespace TotvsPrevent
         public App()
         {
             InitializeComponent();
+#if DEBUG
+            HotReloader.Current.Run(this); 
+#endif
             MainPage = new LoginPage();
         }
 

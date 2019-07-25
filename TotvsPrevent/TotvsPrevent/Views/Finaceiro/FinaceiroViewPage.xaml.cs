@@ -21,7 +21,6 @@ namespace TotvsPrevent.Views.Finaceiro
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
             var vm = BindingContext as FuncionalidadeViewModel;
             func = e.Item as Funcionalidade;
 
