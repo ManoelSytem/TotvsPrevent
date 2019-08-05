@@ -40,11 +40,11 @@
                             Margin="8,0,10,-10"
                           Date="06/21/2018" />
                     <Label  Grid.Column="0"
-                                   Grid.Row="1" Text="Hoje"
-                                    Margin="8,0,8,0"
+                               Grid.Row="1" Text="Hoje"
+                               Margin="8,0,8,0"
                                FontSize="14" 
                               FontAttributes="Bold"
-                               TextColor="#1a73e8"/>
+                              TextColor="#1a73e8"/>
                 </Grid>
             </StackLayout>
         </ListView.Header>
@@ -52,53 +52,57 @@
             <DataTemplate>
                 <ViewCell>
                     <StackLayout
-                            BackgroundColor="White"  Margin="2">
-                        <Grid  Margin="5,8,20,20">
+                             BackgroundColor="White"  Margin="2">
+                        <Grid  Margin="0,8,0,0">
                             <Grid.ColumnDefinitions >
-                                <ColumnDefinition Width="0.5*" />
-                                <ColumnDefinition Width="0.5*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="50" />
-                                <RowDefinition Height="50" />
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Label  Text="Empresa:"
                                     Margin="8,0,8,0"
                                FontSize="Medium" />
-                            <Label Text="{Binding Empresa}"
-                               Margin="13"
+                            <Label  Text="{Binding Empresa}"
+                               Margin="18"
                                FontAttributes="Bold"
-                               FontSize="Large"/>
+                               FontSize="14"/>
                             <Label Grid.Column="0"
-                                   Grid.Row="1" Text="Filial:"
-                                    Margin="8,0,8,0"
+                               Grid.Row="1" Text="Filial:"
+                               Margin="8,0,8,0"
                                FontSize="Medium" />
                             <Label Grid.Column="0"
                                    Grid.Row="1" Text="{Binding filial}"
-                               Margin="13"
+                               Margin="18"
                                FontAttributes="Bold"
-                               FontSize="Large"/>
+                               FontSize="14"/>
                             <Label Grid.Column="1"
                                    Grid.Row="0" Text="Data:"
                                     Margin="8,0,8,0"
                                FontSize="Medium" />
                             <Label Grid.Column="1"
                                    Grid.Row="0" Text="30/07/2018"
-                               Margin="13"
+                               Margin="18"
                                FontAttributes="Bold"
-                               FontSize="Large"/>
+                               FontSize="14"/>
                             <Label Grid.Column="1"
                                    TextColor="Green"
                                    Grid.Row="1"  Text="Total:"
                                     Margin="8,0,8,0"
                                FontSize="Medium" />
                             <Label Grid.Column="1"
-                                    TextColor="Red"
-                                   Grid.Row="1" Text="R$ 3.584.564,00"
+                               TextColor="Red"
+                               FontSize="14"
+                               Grid.Row="1" Text="R$ 3.584.564,00"
                                Margin="15"
                                FontAttributes="Bold"
-                               FontSize="Large"/>
+                               />
                         </Grid>
+                        <StackLayout  Margin="10">
+                            <Button Text="Detalhe" BackgroundColor="#3897f0" TextColor="White" HeightRequest="25" HorizontalOptions="End"/>
+                        </StackLayout>
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>

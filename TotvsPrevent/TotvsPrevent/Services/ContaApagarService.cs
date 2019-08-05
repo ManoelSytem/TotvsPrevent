@@ -22,13 +22,18 @@ namespace TotvsPrevent.Services
             List<string> listTotais = new List<string>(new string[] { "R$ 9.850,00", "R$ 2.850,00", "R$ 7.850,00" });
 
             ContaAPaga Caixa1 = new ContaAPaga { Empresa = "Universo Matriz", filial = "Capim Grosso 02", Total = listTotais };
-            ContaAPaga Caixa2 = new ContaAPaga { Empresa = "Constam", filial = "Feira de Santa 01", Total = listTotais };
+            ContaAPaga Caixa2 = new ContaAPaga { Empresa = "Constam", filial = "Feira de Santana 01", Total = listTotais };
             ContaAPaga Caixa3 = new ContaAPaga { Empresa = "Universo Matriz", filial = "Nova Fatima 02", Total = listTotais };
+            ContaAPaga Caixa4 = new ContaAPaga { Empresa = "Universo Matriz", filial = "Nova Fatima 02", Total = listTotais };
+            ContaAPaga Caixa5 = new ContaAPaga { Empresa = "Universo Matriz", filial = "Nova Fatima 02", Total = listTotais };
+            ContaAPaga Caixa6 = new ContaAPaga { Empresa = "Universo Matriz", filial = "Nova Fatima 02", Total = listTotais };
 
             ListModulo.Add(Caixa1);
             ListModulo.Add(Caixa2);
-            ListModulo.Add(Caixa3);
-
+            ListModulo.Add(Caixa4);
+            ListModulo.Add(Caixa5);
+            ListModulo.Add(Caixa6);
+          
             return ListModulo;
         }
     }
