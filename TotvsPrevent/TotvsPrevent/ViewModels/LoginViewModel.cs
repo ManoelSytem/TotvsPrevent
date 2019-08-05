@@ -71,46 +71,49 @@ namespace TotvsPrevent.ViewModels
         {
             var produtoSelect = (Produto)produto;
 
+            
+                if (string.IsNullOrEmpty(this.Username) || string.IsNullOrEmpty(this.Password))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Mensagem", "Usuário e senha não informado.", "Ok");
+                    return;
+                }
 
-            if (string.IsNullOrEmpty(this.Username) || string.IsNullOrEmpty(this.Password))
-            {
-                await Application.Current.MainPage.DisplayAlert("Mensagem", "Usuário e senha não informado.", "Ok");
-                return;
-            }
-
-            if (produtoSelect == null)
-            {
-                await Application.Current.MainPage.DisplayAlert("Mensagem", "Por gentileza selecione a linha do produto.", "Ok");
-                return;
-            }
+                if (produtoSelect == null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Mensagem", "Por gentileza selecione a linha do produto.", "Ok");
+                    return;
+                }
 
 
-            this.IsEnabled = false;
-            this.IsRunning = true;
+                this.IsEnabled = false;
+                this.IsRunning = true;
 
-            var connection = await this.apiService.CheckConnection();
-            if (!connection.IsSuccess)
-            {
-                this.IsRunning = false;
-                this.IsEnabled = true;
-            }
+                var connection = await this.apiService.CheckConnection();
+                if (!connection.IsSuccess)
+                {
+                    this.IsRunning = false;
+                    this.IsEnabled = true;
+                    await Application.Current.MainPage.DisplayAlert("Mensagem", connection.Message, "Ok");
+                    return;
+                }
 
-            HttpResponseMessage token = new HttpResponseMessage();
-            var url = "http://10.120.8.16:2504/users/authenticate";
-            token = await this.apiService.GetToken(url, this.Username, this.Password);
+                HttpResponseMessage result = new HttpResponseMessage();
+                var url = "http://10.120.8.16:2504/users/authenticate";
+                result = await this.apiService.GetToken(url, this.Username, this.Password);
 
-            if (!token.IsSuccessStatusCode)
-            {
-                this.IsRunning = false;
-                this.isEnabled = true;
-                await Application.Current.MainPage.DisplayAlert("Mensagem", "Credênciais não corresponde! Por gentileza verificar o usuário e a senha.", "Ok");
-                return;
-            }
+                var objeto = result.Content.ReadAsStringAsync();
+
+                if (!result.IsSuccessStatusCode)
+                {
+                    this.IsRunning = false;
+                    this.isEnabled = true;
+                    await Application.Current.MainPage.DisplayAlert("Mensagem", "Credênciais não corresponde! Atenção para realizar login conecte a rede TOTVSBA.", "Ok");
+                    return;
+                }
 
             return;
         }
 
-      
         
     }
 }

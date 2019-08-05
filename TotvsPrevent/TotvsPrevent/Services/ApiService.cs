@@ -20,17 +20,17 @@ namespace TotvsPrevent.Services
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "Por gentileza, verifique a conexão com a internet",
+                    Message = "Por gentileza, verifique a conexão com a rede interna TOTVSBA. Servidor interno da fábrica.",
                 };
             }
 
-            var isReachable = await CrossConnectivity.Current.IsRemoteReachable("http://10.120.8.16:2504");
+            var isReachable = await CrossConnectivity.Current.IsRemoteReachable("http://10.120.8.16:2504/users");
             if (!isReachable)
             {
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "Por gentileza, verifique a conexão com rede interna TotvsBA. Servidor interno da fábrica.",
+                    Message = "Por gentileza, verifique a conexão com rede interna TOTVSBA. Servidor interno da fábrica.",
                 };
             }
 
@@ -51,7 +51,6 @@ namespace TotvsPrevent.Services
 
                 var jsonObjeto = JsonConvert.SerializeObject(objeto);
 
-                var request = new Ht
                 var content = new StringContent(jsonObjeto.ToString(), Encoding.UTF8, "application/Json");
                 var result = await client.PostAsync(urlBase, content);
 
