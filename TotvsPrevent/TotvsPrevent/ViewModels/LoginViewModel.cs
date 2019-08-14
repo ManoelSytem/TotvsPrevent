@@ -1,15 +1,12 @@
 ﻿using GalaSoft.MvvmLight.Command;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using TotvsPrevent.Models;
 using TotvsPrevent.Services;
+using TotvsPrevent.Views;
 using Xamarin.Forms;
-
+using TotvsPrevent.Helpers;
+using TotvsPrevent.Views.RM;
 
 namespace TotvsPrevent.ViewModels
 {
@@ -24,9 +21,12 @@ namespace TotvsPrevent.ViewModels
 
         public bool isRunning;
 
+        public bool isRemembered;
+
 
         public LoginViewModel()
         {
+
             this.apiService = new ApiService();
             this.IsEnabled = true;
         }
@@ -34,14 +34,20 @@ namespace TotvsPrevent.ViewModels
         public bool IsRunning
         {
             get { return this.isRunning; }
-            set  {  this.SetValue(ref this.isRunning, value);  }
+            set { this.SetValue(ref this.isRunning, value); }
+        }
+
+        public bool IsRemembered
+        {
+            get { return this.isRunning; }
+            set { this.SetValue(ref this.isRunning, value); }
         }
 
         public bool isEnabled;
         public bool IsEnabled
         {
-            get { return this.isEnabled; }
-            set { this.SetValue(ref this.isEnabled, value); }
+            get { return this.isRemembered; }
+            set { this.SetValue(ref this.isRemembered, value); }
         }
 
         public ImageSource i_con;
@@ -49,7 +55,7 @@ namespace TotvsPrevent.ViewModels
         {
             get { return this.i_con; }
             set { this.SetValue(ref this.i_con, value); }
-         
+
         }
 
         private string _message;
@@ -71,50 +77,65 @@ namespace TotvsPrevent.ViewModels
         {
             var produtoSelect = (Produto)produto;
 
-            
-                if (string.IsNullOrEmpty(this.Username) || string.IsNullOrEmpty(this.Password))
-                {
-                    await Application.Current.MainPage.DisplayAlert("Mensagem", "Usuário e senha não informado.", "Ok");
-                    return;
-                }
 
-                if (produtoSelect == null)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Mensagem", "Por gentileza selecione a linha do produto.", "Ok");
-                    return;
-                }
+            if (string.IsNullOrEmpty(this.Username) || string.IsNullOrEmpty(this.Password))
+            {
+                await Application.Current.MainPage.DisplayAlert("Mensagem", "Usuário e senha não informado.", "Ok");
+                return;
+            }
+
+            if (produtoSelect == null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Mensagem", "Por gentileza selecione a linha do produto.", "Ok");
+                return;
+            }
 
 
-                this.IsEnabled = false;
-                this.IsRunning = true;
+            this.IsEnabled = false;
+            this.IsRunning = true;
 
-                var connection = await this.apiService.CheckConnection();
-                if (!connection.IsSuccess)
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert("Mensagem", connection.Message, "Ok");
+                return;
+            }
+
+            HttpResponseMessage result = new HttpResponseMessage();
+            var url = "http://10.120.8.16:2504/users/authenticate";
+            result = await this.apiService.GetToken(url, this.Username, this.Password);
+
+            var objeto = result.Content.ReadAsStringAsync();
+
+            if (!result.IsSuccessStatusCode)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert("Mensagem", "Credênciais não corresponde! Atenção para realizar login conecte a rede TOTVSBA.", "Ok");
+                return;
+            }
+
+            else
+            {
+
+                Settings.Produto = produtoSelect.Nome;
+                if(produtoSelect.Nome == "Protheus")
                 {
                     this.IsRunning = false;
                     this.IsEnabled = true;
-                    await Application.Current.MainPage.DisplayAlert("Mensagem", connection.Message, "Ok");
-                    return;
-                }
-
-                HttpResponseMessage result = new HttpResponseMessage();
-                var url = "http://10.120.8.16:2504/users/authenticate";
-                result = await this.apiService.GetToken(url, this.Username, this.Password);
-
-                var objeto = result.Content.ReadAsStringAsync();
-
-                if (!result.IsSuccessStatusCode)
+                    Application.Current.MainPage = new MainPage();
+                   
+                }else if(produtoSelect.Nome == "RM")
                 {
                     this.IsRunning = false;
-                    this.isEnabled = true;
-                    await Application.Current.MainPage.DisplayAlert("Mensagem", "Credênciais não corresponde! Atenção para realizar login conecte a rede TOTVSBA.", "Ok");
-                    return;
+                    this.IsEnabled = true;
+                    Application.Current.MainPage = new MainPage(); 
                 }
-
-            return;
+            }
         }
 
-        
     }
 }
 

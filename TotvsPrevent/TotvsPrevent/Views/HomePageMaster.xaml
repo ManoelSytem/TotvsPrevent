@@ -1,12 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="TotvsPrevent.Views.RM.RmHomePage"
-             Title="Totvs Prevent">
-
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="TotvsPrevent.Views.HomePageMaster"
+    Title="Totvs Prevent"
+>
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="FrameOptions" TargetType="Frame">
@@ -49,7 +47,7 @@
                             JustifyContent="Center"
                         >
                             <Label 
-                                Text="RM"
+                                Text="Protheus"
                                 FontSize="30"
                             />
                         </FlexLayout>
@@ -66,94 +64,94 @@
                 FontSize="Medium"
             />
 
-                <ScrollView
+            <ScrollView
                 Orientation="Horizontal"    
             >
-                    <FlexLayout
+                <FlexLayout
                     Direction="Row"
                 >
-                        <Frame
+                    <Frame
                         Style="{StaticResource FrameOptions}"
                         Padding="0"
                         HeightRequest="{OnPlatform Android=120, iOS=140}"
                         WidthRequest="{OnPlatform Android=120, iOS=140}"
                     >
-                            <StackLayout
+                        <StackLayout
                             Spacing="0"
                             VerticalOptions="Center"
                         >
-                                <Image 
-                                Source=""
-                            />
-
-                                <Label 
-                                Text="Recursos Humanos"
-                                FontSize="Small"
-                                HorizontalTextAlignment="Center"
-                                Margin="10,0"
-                            />
-                            </StackLayout>
-                        </Frame>
-
-                        <Frame
-                        Style="{StaticResource FrameOptions}"
-                        Padding="0"
-                        HeightRequest="{OnPlatform Android=120, iOS=140}"
-                        WidthRequest="{OnPlatform Android=120, iOS=140}"
-                    >
-                            <StackLayout
-                            Spacing="0"
-                            VerticalOptions="Center"
-                        >
-                                <Image 
-                                Source="fiscal.png"
-                            />
-
-                                <Label 
-                                Text="Fiscal"
-                                FontSize="Small"
-                                HorizontalTextAlignment="Center"
-                                Margin="10,0"
-                            />
-                            </StackLayout>
-                        </Frame>
-
-                        <Frame
-                        Style="{StaticResource FrameOptions}"
-                        Padding="0"
-                        HeightRequest="{OnPlatform Android=120, iOS=140}"
-                        WidthRequest="{OnPlatform Android=120, iOS=140}"
-                    >
-                            <StackLayout
-                            Spacing="0"
-                            VerticalOptions="Center"
-                        >
-                                <Image 
+                            <Image 
                                 Source="Finaceiro.png"
                             />
-                                <Label 
+
+                            <Label 
                                 Text="Financeiro"
                                 FontSize="Small"
                                 HorizontalTextAlignment="Center"
                                 Margin="10,0"
                             />
-                            </StackLayout>
-                        </Frame>
-                    </FlexLayout>
-                </ScrollView>
-                <FlexLayout
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame
+                        Style="{StaticResource FrameOptions}"
+                        Padding="0"
+                        HeightRequest="{OnPlatform Android=120, iOS=140}"
+                        WidthRequest="{OnPlatform Android=120, iOS=140}"
+                    >
+                        <StackLayout
+                            Spacing="0"
+                            VerticalOptions="Center"
+                        >
+                            <Image 
+                                Source="fiscal.png"
+                            />
+
+                            <Label 
+                                Text="Fiscal"
+                                FontSize="Small"
+                                HorizontalTextAlignment="Center"
+                                Margin="10,0"
+                            />
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame
+                        Style="{StaticResource FrameOptions}"
+                        Padding="0"
+                        HeightRequest="{OnPlatform Android=120, iOS=140}"
+                        WidthRequest="{OnPlatform Android=120, iOS=140}"
+                    >
+                        <StackLayout
+                            Spacing="0"
+                            VerticalOptions="Center"
+                        >
+                            <Image 
+                                Source="faturamento.png"
+                            />
+                            <Label 
+                                Text="Faturamento"
+                                FontSize="Small"
+                                HorizontalTextAlignment="Center"
+                                Margin="10,0"
+                            />
+                        </StackLayout>
+                    </Frame>
+                </FlexLayout>
+            </ScrollView>
+            <FlexLayout
                 Direction="Row"
                 AlignItems="Center"
             >
-                    <Image 
+                <Image 
                     Source="wallet_history.png"
                 />
-                    <Label 
+                <Label 
                     Text="Totvs Prevent."
                     Margin="10,0,0,0"
                 />
-                </FlexLayout>
-            </StackLayout>
+            </FlexLayout>
+        </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

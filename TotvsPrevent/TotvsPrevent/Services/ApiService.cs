@@ -24,7 +24,7 @@ namespace TotvsPrevent.Services
                 };
             }
 
-            var isReachable = await CrossConnectivity.Current.IsRemoteReachable("http://10.120.8.16:2504/users");
+            var isReachable = await CrossConnectivity.Current.IsRemoteReachable("10.120.8.16",2504,500000);
             if (!isReachable)
             {
                 return new Response

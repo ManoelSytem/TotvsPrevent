@@ -10,7 +10,7 @@
     <item name="windowActionBar">false</item>
     <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette -->
     <!-- colorPrimary is used for the default action bar background -->
-    <item name="colorPrimary">#FFFF</item>
+    <item name="colorPrimary">#3e3835</item>
     <!-- colorPrimaryDark is used for the status bar -->
     <item name="colorPrimaryDark">#FFFF</item>
     <!-- colorAccent is used as the default value for colorControlActivated
@@ -24,7 +24,7 @@
   </style>
 
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
-    <item name="colorAccent">#FF4081</item>
+    <item name="colorAccent">#3e3835</item>
   </style>
   
    <style name="MyTheme.Splash" parent ="Theme.AppCompat.Light.NoActionBar">

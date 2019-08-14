@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 using TotvsPrevent.Models;
 using System.Collections.ObjectModel;
 using TotvsPrevent.Services;
+using TotvsPrevent.Helpers;
+using TotvsPrevent.Views.RM;
 
 namespace TotvsPrevent.Views
 {
@@ -21,10 +20,13 @@ namespace TotvsPrevent.Views
         {
             InitializeComponent();
             ImgbackMenu.Source = ImageSource.FromResource("TotvsPrevent.Resource.backMenu.png");
-            _menuLista = ItemService.GetMenuItens();
+            _menuLista = ItemService.GetMenuItens(Settings.Produto);
             navigationDrawerList.ItemsSource = _menuLista;
             ImgCicle.Source = ImageSource.FromResource("TotvsPrevent.Resource.perfil_icon.png");
-            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(HomePage)));
+            if(Settings.Produto == "Protheus")
+            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(HomePageMaster)));
+            else
+            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(RmHomePage)));
         }
 
         private void OnMenuItemSelected(object sender, SelectedItemChangedEventArgs e)

@@ -3,7 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using TotvsPrevent.Services;
 using TotvsPrevent.Views;
-
+using TotvsPrevent.Helpers;
 namespace TotvsPrevent
 {
     public partial class App : Application
@@ -12,10 +12,8 @@ namespace TotvsPrevent
         public App()
         {
             InitializeComponent();
-#if DEBUG
-            HotReloader.Current.Run(this); 
-#endif
-            MainPage = new LoginPage();
+            MainPage = new NavigationPage(new LoginPage());
+         
         }
 
         protected override void OnStart()
