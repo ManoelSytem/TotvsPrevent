@@ -19,6 +19,8 @@
     <ListView x:Name="ListViewContaApagar" ItemsSource="{Binding ContaApagar}"
            HasUnevenRows="True"
            BackgroundColor="#ecf0f1"
+           IsRefreshing="{Binding IsRefreshing}"
+           IsPullToRefreshEnabled="True"
            ItemSelected="Selected"  >
         <ListView.Header>
             <StackLayout

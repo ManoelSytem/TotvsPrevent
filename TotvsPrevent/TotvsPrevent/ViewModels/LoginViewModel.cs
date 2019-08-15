@@ -7,6 +7,7 @@ using TotvsPrevent.Views;
 using Xamarin.Forms;
 using TotvsPrevent.Helpers;
 using TotvsPrevent.Views.RM;
+using Newtonsoft.Json;
 
 namespace TotvsPrevent.ViewModels
 {
@@ -107,20 +108,28 @@ namespace TotvsPrevent.ViewModels
             var url = "http://10.120.8.16:2504/users/authenticate";
             result = await this.apiService.GetToken(url, this.Username, this.Password);
 
-            var objeto = result.Content.ReadAsStringAsync();
+            var resultObjeto = result.Content.ReadAsStringAsync().Result;
 
-            if (!result.IsSuccessStatusCode)
+            Cliente cliente =  JsonConvert.DeserializeObject<Cliente>(resultObjeto);
+
+            if (!result.IsSuccessStatusCode || string.IsNullOrEmpty(cliente.token))
             {
                 this.IsRunning = false;
                 this.IsEnabled = true;
+                
                 await Application.Current.MainPage.DisplayAlert("Mensagem", "Credênciais não corresponde! Atenção para realizar login conecte a rede TOTVSBA.", "Ok");
                 return;
             }
 
             else
             {
-
-                Settings.Produto = produtoSelect.Nome;
+                if(IsRemembered == true)
+                {
+                    Settings.Produto = produtoSelect.Nome;
+                    Settings.AccessToken = cliente.token;
+                    this.IsRemembered = true;
+                }
+                
                 if(produtoSelect.Nome == "Protheus")
                 {
                     this.IsRunning = false;

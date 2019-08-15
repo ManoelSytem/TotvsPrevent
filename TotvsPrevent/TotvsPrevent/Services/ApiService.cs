@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using TotvsPrevent.Models;
+using System.Net.Http.Headers;
 
 namespace TotvsPrevent.Services
 {
@@ -45,31 +46,34 @@ namespace TotvsPrevent.Services
         {
             try
             {
-                var client = new HttpClient();
+                HttpClient client = new HttpClient();
+                
 
                 var objeto = new { username = user , password = senha  };
 
                 var jsonObjeto = JsonConvert.SerializeObject(objeto);
+
 
                 var content = new StringContent(jsonObjeto.ToString(), Encoding.UTF8, "application/Json");
                 var result = await client.PostAsync(urlBase, content);
 
                 return result;
             }
-            catch (Exception)
+            catch (HttpRequestException e)
             {
 
                 return null;
             }
         }
-        public async Task<Response> GetList<T>(string urlBase, string preFix, string controller, string action)
+        public async Task<Response> GetList<T>(string urlBase, string preFix, string controller, string action, string token, string acessToken)
         {
             try
             {
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(urlBase);
-                var url = $"{preFix}{controller}{action}";
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token, acessToken);
 
+                var url = $"{preFix}{controller}{action}";
                 var response = await client.GetAsync(url);
                 var answer = await response.Content.ReadAsStringAsync();
 

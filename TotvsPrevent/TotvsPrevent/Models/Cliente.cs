@@ -6,10 +6,13 @@ namespace TotvsPrevent.Models
 {
     public class Cliente
     {
-        public string Usuario { get; set;}
 
-        public string Senha { get; set; }
-
+        public string id { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string token { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
 
     }
 }

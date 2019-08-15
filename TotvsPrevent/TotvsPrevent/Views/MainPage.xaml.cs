@@ -32,14 +32,20 @@ namespace TotvsPrevent.Views
         private void OnMenuItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = (MasterPageItem)e.SelectedItem;
-            //obtem o tipo de objeto 
             Type pagina = item.TargetType;
 
-            //abre a pagina correspondente ao item selecionado
-            //Cria uma instância do tipo especificado usando o construtor
-            //que melhor se adequa ao parametro informado
+
+            if (item.Title == "Sair")
+            {
+                Settings.Produto = string.Empty;
+                Settings.AccessToken = string.Empty;
+                Application.Current.MainPage = new NavigationPage(new LoginPage());
+            }
+
+            else { 
             Detail = new NavigationPage((Page)Activator.CreateInstance(pagina));
             IsPresented = false;
+            }
         }
     }
 }

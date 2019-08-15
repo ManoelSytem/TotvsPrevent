@@ -4,6 +4,8 @@ using Xamarin.Forms.Xaml;
 using TotvsPrevent.Services;
 using TotvsPrevent.Views;
 using TotvsPrevent.Helpers;
+using TotvsPrevent.Views.Finaceiro;
+
 namespace TotvsPrevent
 {
     public partial class App : Application

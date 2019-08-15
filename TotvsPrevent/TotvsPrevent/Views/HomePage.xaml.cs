@@ -39,6 +39,7 @@ namespace TotvsPrevent.Views
             }
             else
             {
+
                 await Navigation.PushAsync((Page)Activator.CreateInstance(pagina),true);
             }
            
