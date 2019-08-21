@@ -4,6 +4,7 @@ using TotvsPrevent.Models;
 using TotvsPrevent.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using TotvsPrevent.Helpers;
 
 namespace TotvsPrevent.Views
 {
@@ -25,9 +26,10 @@ namespace TotvsPrevent.Views
                 new Produto { Id=1,Nome="RM"},
                 new Produto { Id=2, Nome = "Protheus" }
             };
-            //Button_Entrar.Visibility = ViewStates.Gone;
-            Entry_Login.Completed += (s, e) => Entry_Senha.Focus();
-            Entry_Senha.Completed += (s, e) => EntrarProcedure(s, e);
+           
+           Entry_Login.Completed += (s, e) => Entry_Senha.Focus();
+           Entry_Senha.Completed += (s, e) => EntrarProcedure(s, e);
+
         }
 
 
@@ -35,8 +37,8 @@ namespace TotvsPrevent.Views
         {
             try
             {
-                  
-                   string accesstoken = "";
+
+                string accesstoken = "";
                 //var accesstoken = await _apiService.LoginAsync(Entry_Login.Text, Entry_Senha.Text);
                 if (!string.IsNullOrEmpty(accesstoken))
                 {

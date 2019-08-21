@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using TotvsPrevent.Models;
+using TotvsPrevent.Views;
 using TotvsPrevent.Views.Finaceiro;
 
 namespace TotvsPrevent.Services
@@ -33,6 +34,8 @@ namespace TotvsPrevent.Services
                 Servico = "Protheus",
                 Nome = "Fiscal",
                 Descricao = "Fiscal",
+                TargetType = typeof(ConstrucaoView)
+                
             });
 
             ListModulo.Add(new Modulo()
@@ -40,6 +43,7 @@ namespace TotvsPrevent.Services
                 Servico = "Protheus",
                 Nome = "Faturamento",
                 Descricao = "Faturamento",
+                TargetType = typeof(ConstrucaoView)
             });
 
             return ListModulo;

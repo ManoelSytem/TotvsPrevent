@@ -8,6 +8,12 @@
 
     <Application.Resources>
         <ResourceDictionary>
+            <x:String x:Key="UrlAPIAutentication">http://10.120.8.16:2504/users/authenticate</x:String>
+            <x:String x:Key="UrlAPI">http://10.120.8.16:2504</x:String>
+            <x:String x:Key="UrlPrefix">/api</x:String>
+            <x:String x:Key="UrlPrefixController">/Financeiro</x:String>
+            <x:String x:Key="UrlContaApagarAction">/GetContaAPagar</x:String>
+
             <!--Global Styles-->
             <Color x:Key="NavigationPrimary">#FFFFFF</Color>
             <Style TargetType="NavigationPage">

@@ -21,7 +21,7 @@ namespace TotvsPrevent.Services
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "Por gentileza, verifique a conexão com a rede interna TOTVSBA. Servidor interno da fábrica.",
+                    Message = "Por gentileza, verifique sua conexão com a internet.",
                 };
             }
 
@@ -31,7 +31,7 @@ namespace TotvsPrevent.Services
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "Por gentileza, verifique a conexão com rede interna TOTVSBA. Servidor interno da fábrica.",
+                    Message = "Por gentileza, verifique a conexão com a rede interna TOTVSBA. Servidor interno da fábrica.",
                 };
             }
 
@@ -65,15 +65,15 @@ namespace TotvsPrevent.Services
                 return null;
             }
         }
-        public async Task<Response> GetList<T>(string urlBase, string preFix, string controller, string action, string token, string acessToken)
+        public async Task<Response> GetList<T>(string urlBase, string preFix, string controller, string action, string acessToken)
         {
             try
             {
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(urlBase);
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token, acessToken);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", acessToken);
 
-                var url = $"{preFix}{controller}{action}";
+                var url = $"{preFix}{controller}";
                 var response = await client.GetAsync(url);
                 var answer = await response.Content.ReadAsStringAsync();
 
@@ -82,7 +82,7 @@ namespace TotvsPrevent.Services
                     return new Response
                     {
                         IsSuccess = false,
-                        Message = answer,
+                        Message = response.StatusCode.ToString(),
                     };
                 }
 
@@ -97,7 +97,6 @@ namespace TotvsPrevent.Services
             }
             catch (Exception e)
             {
-
                 return new Response
                 {
                     IsSuccess = false,

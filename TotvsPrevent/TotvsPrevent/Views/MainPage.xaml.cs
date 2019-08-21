@@ -39,6 +39,11 @@ namespace TotvsPrevent.Views
             {
                 Settings.Produto = string.Empty;
                 Settings.AccessToken = string.Empty;
+                Settings.Produto = string.Empty; 
+                Settings.AccessToken = string.Empty;
+                Settings.IsRemembered = string.Empty;
+                Settings.Username = string.Empty;
+                Settings.Password = string.Empty;
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
             }
 

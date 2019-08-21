@@ -11,11 +11,11 @@ namespace TotvsPrevent.ViewModels
 {
     public class ContaApagarViewModel : BaseViewModel
     {
+        private ContaApagarService contaApagarService;
+
         private ApiService apiService;
 
         private bool isRefreshing;
-
-        private ContaApagarService contaApagarService;
 
         private ObservableCollection<ContaAPaga> contaApagar;
 
@@ -32,33 +32,14 @@ namespace TotvsPrevent.ViewModels
         }
         public ContaApagarViewModel()
         {
-            //this.apiService = new WebApiService();
-            //this.GetAllContaApagar();
-
             contaApagarService = new ContaApagarService();
+            apiService = new ApiService();
+            LoadContaApagar();
 
-            ContaApagar = new ObservableCollection<ContaAPaga>
-            {
-            };
-            ContaApagar = contaApagarService.GetAll();
-            //this.apiService  = new ApiService();
-            //this.GetAllContaApagar();
-        }
-
-        private async void GetAllContaApagar()
-        {
-            ////var response = await this.apiService.GetList<ContaAPaga>("https://localhost:5001/", "/api", "/Finaceiro", "/GetTotalCaixa");
-            //if (!response.IsSuccess)
-            //{
-            //    await Application.Current.MainPage.DisplayAlert("Erro", response.Message, "ok"); ;
-            //    return;
-            //}
-            //var list = (List<ContaAPaga>)response.Result;
-            //this.contaApagar = new ObservableCollection<ContaAPaga>(list);
         }
 
 
-        private async void LoadProducts()
+        private async void LoadContaApagar()
         {
             this.IsRefreshing = true;
 
@@ -70,11 +51,7 @@ namespace TotvsPrevent.ViewModels
                 return;
             }
 
-            var url = Application.Current.Resources["UrlAPI"].ToString();
-            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
-            var controller = Application.Current.Resources["UrlProductsController"].ToString();
-
-            var response = await this.apiService.GetList<ContaAPaga>(url, prefix, controller, "GetProduto", Settings.AccessToken,"");
+            var response = await this.contaApagarService.GetAll();
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
@@ -91,7 +68,7 @@ namespace TotvsPrevent.ViewModels
         {
             get
             {
-                return new RelayCommand(LoadProducts);
+                return new RelayCommand(LoadContaApagar);
             }
         }
     }

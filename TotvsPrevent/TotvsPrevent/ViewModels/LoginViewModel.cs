@@ -20,17 +20,25 @@ namespace TotvsPrevent.ViewModels
 
         public string produto { get; set; }
 
-        public bool isRunning;
 
-        public bool isRemembered;
 
 
         public LoginViewModel()
         {
-
             this.apiService = new ApiService();
             this.IsEnabled = true;
         }
+
+        public LoginViewModel(string username, string password)
+        {
+            this.Username = username;
+            this.Password = password;
+            this.produto = Settings.Produto;
+            this.apiService = new ApiService();
+            this.IsEnabled = true;
+        }
+
+        public bool isRunning;
 
         public bool IsRunning
         {
@@ -38,17 +46,20 @@ namespace TotvsPrevent.ViewModels
             set { this.SetValue(ref this.isRunning, value); }
         }
 
+
+        public bool isRemembered;
+
         public bool IsRemembered
         {
-            get { return this.isRunning; }
-            set { this.SetValue(ref this.isRunning, value); }
+            get { return this.isRemembered; }
+            set { this.SetValue(ref this.isRemembered, value); }
         }
 
         public bool isEnabled;
         public bool IsEnabled
         {
-            get { return this.isRemembered; }
-            set { this.SetValue(ref this.isRemembered, value); }
+            get { return this.isEnabled; }
+            set { this.SetValue(ref this.isEnabled, value); }
         }
 
         public ImageSource i_con;
@@ -105,42 +116,50 @@ namespace TotvsPrevent.ViewModels
             }
 
             HttpResponseMessage result = new HttpResponseMessage();
-            var url = "http://10.120.8.16:2504/users/authenticate";
+
+            var url = Application.Current.Resources["UrlAPIAutentication"].ToString();
+
             result = await this.apiService.GetToken(url, this.Username, this.Password);
 
             var resultObjeto = result.Content.ReadAsStringAsync().Result;
 
-            Cliente cliente =  JsonConvert.DeserializeObject<Cliente>(resultObjeto);
+            Cliente cliente = JsonConvert.DeserializeObject<Cliente>(resultObjeto);
 
             if (!result.IsSuccessStatusCode || string.IsNullOrEmpty(cliente.token))
             {
                 this.IsRunning = false;
                 this.IsEnabled = true;
-                
                 await Application.Current.MainPage.DisplayAlert("Mensagem", "Credênciais não corresponde! Atenção para realizar login conecte a rede TOTVSBA.", "Ok");
                 return;
             }
-
             else
             {
-                if(IsRemembered == true)
+                if (this.IsRemembered == true)
                 {
                     Settings.Produto = produtoSelect.Nome;
                     Settings.AccessToken = cliente.token;
-                    this.IsRemembered = true;
+                    Settings.IsRemembered = "true";
+                    Settings.Username = this.Username;
+                    Settings.Password = this.Password;
                 }
-                
-                if(produtoSelect.Nome == "Protheus")
+                else
+                {
+                    Settings.Produto = produtoSelect.Nome;
+                    Settings.AccesstokenTemp = cliente.token;
+                }
+
+                if (produtoSelect.Nome == "Protheus")
                 {
                     this.IsRunning = false;
                     this.IsEnabled = true;
                     Application.Current.MainPage = new MainPage();
-                   
-                }else if(produtoSelect.Nome == "RM")
+
+                }
+                else if (produtoSelect.Nome == "RM")
                 {
                     this.IsRunning = false;
                     this.IsEnabled = true;
-                    Application.Current.MainPage = new MainPage(); 
+                    Application.Current.MainPage = new MainPage();
                 }
             }
         }

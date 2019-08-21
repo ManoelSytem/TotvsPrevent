@@ -2,39 +2,37 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using TotvsPrevent.Models;
+using Xamarin.Forms;
+using TotvsPrevent.Helpers;
 
 namespace TotvsPrevent.Services
 {
     public class ContaApagarService
     {
+        private ApiService apiService;
+
         private static ObservableCollection<ContaAPaga> ListModulo { get; set; }
 
         public ContaApagarService()
         {
-
+            apiService = new ApiService();
         }
 
-        public ObservableCollection<ContaAPaga> GetAll()
+        public async Task<Response> GetAll()
         {
-            ListModulo = new ObservableCollection<ContaAPaga>();
+           
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var urlPrefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var prefixControl = Application.Current.Resources["UrlPrefixController"].ToString();
+            var action = Application.Current.Resources["UrlContaApagarAction"].ToString();
 
-            List<string> listTotais = new List<string>(new string[] { "R$ 9.850,00", "R$ 2.850,00", "R$ 7.850,00" });
 
-            ContaAPaga Caixa1 = new ContaAPaga { Empresa = "Universo Matriz", filial = "Capim Grosso 02", Total = listTotais };
-            ContaAPaga Caixa2 = new ContaAPaga { Empresa = "Constam", filial = "Feira de Santana 01", Total = listTotais };
-            ContaAPaga Caixa3 = new ContaAPaga { Empresa = "Universo Matriz", filial = "Nova Fatima 02", Total = listTotais };
-            ContaAPaga Caixa4 = new ContaAPaga { Empresa = "Universo Matriz", filial = "Nova Fatima 02", Total = listTotais };
-            ContaAPaga Caixa5 = new ContaAPaga { Empresa = "Universo Matriz", filial = "Nova Fatima 02", Total = listTotais };
-            ContaAPaga Caixa6 = new ContaAPaga { Empresa = "Universo Matriz", filial = "Nova Fatima 02", Total = listTotais };
+            var response = await this.apiService.GetList<ContaAPaga>(url, urlPrefix, prefixControl, action, Settings.IsRemembered != "false" ? Settings.AccessToken : Settings.AccesstokenTemp);
+           
 
-            ListModulo.Add(Caixa1);
-            ListModulo.Add(Caixa2);
-            ListModulo.Add(Caixa4);
-            ListModulo.Add(Caixa5);
-            ListModulo.Add(Caixa6);
-          
-            return ListModulo;
+            return response;
         }
     }
 }
