@@ -80,7 +80,7 @@
                             Spacing="0"
                             VerticalOptions="Center"
                         >
-                            <Image 
+                                <ImageButton  Clicked="OnImageButtonFinaceiro"
                                 Source="Finaceiro.png"
                             />
 

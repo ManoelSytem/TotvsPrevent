@@ -82,7 +82,7 @@ namespace TotvsPrevent.Services
                     return new Response
                     {
                         IsSuccess = false,
-                        Message = response.StatusCode.ToString(),
+                        Message = response.RequestMessage.ToString(),
                     };
                 }
 

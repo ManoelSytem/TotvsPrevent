@@ -21,7 +21,7 @@
            BackgroundColor="#ecf0f1"
            IsRefreshing="{Binding IsRefreshing}"
            IsPullToRefreshEnabled="True"
-           ItemSelected="Selected"  >
+           RefreshCommand="{Binding RefreshCommand}" >
         <ListView.Header>
             <StackLayout
                             BackgroundColor="White"  Margin="2">
@@ -50,62 +50,59 @@
                 </Grid>
             </StackLayout>
         </ListView.Header>
-        <ListView.ItemTemplate>
+        <ListView.ItemTemplate  >
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout
-                             BackgroundColor="White"  Margin="2">
-                        <Grid  Margin="0,8,0,0">
-                            <Grid.ColumnDefinitions >
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Label  Text="Empresa:"
-                                    Margin="8,0,8,0"
-                               FontSize="Medium" />
-                            <Label  Text="{Binding Empresa}"
-                               Margin="18"
-                               FontAttributes="Bold"
-                               FontSize="14"/>
-                            <Label Grid.Column="0"
-                               Grid.Row="1" Text="Filial:"
-                               Margin="8,0,8,0"
-                               FontSize="Medium" />
-                            <Label Grid.Column="0"
-                                   Grid.Row="1" Text="{Binding filial}"
-                               Margin="18"
-                               FontAttributes="Bold"
-                               FontSize="14"/>
-                            <Label Grid.Column="1"
-                                   Grid.Row="0" Text="Data:"
-                                    Margin="8,0,8,0"
-                               FontSize="Medium" />
-                            <Label Grid.Column="1"
-                                   Grid.Row="0" Text="30/07/2018"
-                               Margin="18"
-                               FontAttributes="Bold"
-                               FontSize="14"/>
-                            <Label Grid.Column="1"
-                                   TextColor="Green"
-                                   Grid.Row="1"  Text="Total:"
-                                    Margin="8,0,8,0"
-                               FontSize="Medium" />
-                            <Label Grid.Column="1"
-                               TextColor="Red"
-                               FontSize="14"
-                               Grid.Row="1" Text="R$ 3.584.564,00"
-                               Margin="15"
-                               FontAttributes="Bold"
-                               />
-                        </Grid>
-                        <StackLayout  Margin="10">
-                            <Button Text="Detalhe" BackgroundColor="#3897f0" TextColor="White" HeightRequest="25" HorizontalOptions="End"/>
+                    <StackLayout Padding="10" Spacing="10" Margin="2">
+                        <Grid Margin="0,8,0,0" Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Frame Padding="0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                    <StackLayout  Orientation="Vertical"  Grid.Column="0" Padding="10">
+                                            <Label Text="{Binding Empresa}" 
+                                   HorizontalTextAlignment="Start" FontSize="Large" TextColor="Black"/>
+                                            <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <FormattedString.Spans>
+                                                        <Span Text="Total " FontSize="Small"/>
+                                                            <Span Text="R$ 3.246,00" FontSize="Small" FontAttributes="Bold" />
+                                                    </FormattedString.Spans>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        <Label Text="Status" 
+                                   HorizontalTextAlignment="Start" FontSize="Medium" TextColor="Black"/>
+                                        <Label Text="Pendente" 
+                                   HorizontalTextAlignment="Start" FontSize="Small" TextColor="Orange"/>
+                                    </StackLayout>
+                                        <StackLayout Orientation="Vertical" Grid.Column="1" Padding="10">
+                                            <Label Text="Data" 
+                                              HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>
+                                             <Label Text="31/08/2018" 
+                                              HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>
+                                             <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <FormattedString.Spans>
+                                                        </FormattedString.Spans>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <BoxView Color="Gray" HorizontalOptions="Fill" HeightRequest="1"/>
+                                            <Button BackgroundColor="#C1802A" TextColor="White" BorderRadius="30" Command="{Binding BeTouristCommand}"
+                                Text="Detalhe" FontSize="Small"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
                         </StackLayout>
-                    </StackLayout>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>

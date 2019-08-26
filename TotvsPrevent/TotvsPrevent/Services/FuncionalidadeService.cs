@@ -34,7 +34,7 @@ namespace TotvsPrevent.Services
                 Descricao = "Gestão",
                 Imagem = null,
                 Modulo = "F",
-                TargetType = typeof(JuraMultaPage)
+                TargetType = typeof(Teste)
             });
            
 

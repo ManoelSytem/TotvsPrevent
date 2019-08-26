@@ -14,7 +14,7 @@
     <ListView  x:Name="Modulo" ItemsSource="{Binding Modulo}"
            HasUnevenRows="True"
            BackgroundColor="#ecf0f1"
-           ItemSelected="ModuloSelected" >
+           ItemTapped="ModuloSelected" >
         <ListView.ItemTemplate  >
             <DataTemplate>
                 <ViewCell>

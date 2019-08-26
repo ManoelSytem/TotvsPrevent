@@ -17,6 +17,7 @@ namespace TotvsPrevent.Views
         public HomePage()
         {
             InitializeComponent();
+           
 
         }
 
@@ -29,6 +30,8 @@ namespace TotvsPrevent.Views
 
         private async void ModuloSelected(object sender, SelectedItemChangedEventArgs e)
         {
+
+            
             var item = (Modulo)e.SelectedItem;
             Type pagina = item.TargetType;
 
@@ -39,7 +42,6 @@ namespace TotvsPrevent.Views
             }
             else
             {
-
                 await Navigation.PushAsync((Page)Activator.CreateInstance(pagina),true);
             }
            

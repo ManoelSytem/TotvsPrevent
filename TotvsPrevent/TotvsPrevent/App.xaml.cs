@@ -18,15 +18,17 @@ namespace TotvsPrevent
         public App()
         {
             InitializeComponent();
-            if (Settings.IsRemembered == "true" && Settings.Username != string.Empty && Settings.Password != string.Empty && Settings.Produto != string.Empty)
-            {
-                Validation(Settings.IsRemembered, Settings.Username, Settings.Password, Settings.Produto);
-            }
-            else
-            {
-                MainPage = new NavigationPage(new LoginPage());
-            }
-         
+            //if (Settings.IsRemembered == "true" && Settings.Username != string.Empty && Settings.Password != string.Empty && Settings.Produto != string.Empty)
+            //{
+            //    Validation(Settings.IsRemembered, Settings.Username, Settings.Password, Settings.Produto);
+            //}
+            //else
+            //{
+            //    MainPage = new NavigationPage(new LoginPage());
+            //}
+
+            MainPage = new NavigationPage(new Teste());
+
         }
 
         protected override void OnStart()
@@ -77,12 +79,13 @@ namespace TotvsPrevent
             {
                 if (produto == "Protheus")
                 {
-                    
+                    Settings.AccesstokenTemp = cliente.token;
                     Application.Current.MainPage = new MainPage();
 
                 }
                 else if (produto == "RM")
                 {
+                    Settings.AccesstokenTemp = cliente.token;
                     Application.Current.MainPage = new MainPage();
                 }
             }

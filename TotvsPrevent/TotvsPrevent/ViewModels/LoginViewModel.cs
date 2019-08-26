@@ -144,6 +144,7 @@ namespace TotvsPrevent.ViewModels
                 }
                 else
                 {
+                    Settings.IsRemembered = "false";
                     Settings.Produto = produtoSelect.Nome;
                     Settings.AccesstokenTemp = cliente.token;
                 }

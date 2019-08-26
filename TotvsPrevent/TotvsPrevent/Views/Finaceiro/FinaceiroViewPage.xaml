@@ -13,7 +13,7 @@
     <ListView  x:Name="Funcionalidade" ItemsSource="{Binding Funcionalidade}"
            HasUnevenRows="True"
            BackgroundColor="#ecf0f1"
-            ItemSelected="FuncionalidadeSelected" >
+           ItemTapped="FuncionalidadeSelected" >
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
