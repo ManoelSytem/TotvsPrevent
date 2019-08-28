@@ -29,5 +29,6 @@ namespace TotvsPrevent.Views.Finaceiro
         {
             await Navigation.PushAsync(new ColigadaViewPage(), true);
         }
+
     }
 }

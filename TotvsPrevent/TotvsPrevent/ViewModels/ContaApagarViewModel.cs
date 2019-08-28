@@ -60,6 +60,11 @@ namespace TotvsPrevent.ViewModels
             }
 
             var list = (List<ContaAPaga>)response.Result;
+
+            foreach (ContaAPaga cont in list)
+            {
+                cont.ContaApagarEmpresa = lisaContaApagar();
+            }
             this.ContaApagar = new ObservableCollection<ContaAPaga>(list);
             this.IsRefreshing = false;
         }
@@ -71,5 +76,32 @@ namespace TotvsPrevent.ViewModels
                 return new RelayCommand(LoadContaApagar);
             }
         }
+
+        private List<ContaApagarEmpresa> lisaContaApagar()
+        {
+            var listaContaApagarEmpresa = new List<ContaApagarEmpresa>();
+            listaContaApagarEmpresa.Add(new ContaApagarEmpresa { Servico = "Limpeza", valor = "R$ 3.646,00", Dapartamento = "RH" });
+            listaContaApagarEmpresa.Add(new ContaApagarEmpresa { Servico = "Elétrica", valor = "R$ 3.646,00", Dapartamento = "Engenharia" });
+            listaContaApagarEmpresa.Add(new ContaApagarEmpresa { Servico = "Estoque", valor = "R$ 3.646,00", Dapartamento = "Engenharia" });
+            listaContaApagarEmpresa.Add(new ContaApagarEmpresa { Servico = "Estoque", valor = "R$ 3.646,00", Dapartamento = "Engenharia" });
+            listaContaApagarEmpresa.Add(new ContaApagarEmpresa { Servico = "Estoque", valor = "R$ 3.646,00", Dapartamento = "Engenharia" });
+            listaContaApagarEmpresa.Add(new ContaApagarEmpresa { Servico = "Estoque", valor = "R$ 3.646,00", Dapartamento = "Engenharia" });
+
+            return listaContaApagarEmpresa;
+        }
+
+        public ICommand Detalhe
+        {
+            get
+            {
+                return new RelayCommand<ContaAPaga>((contaAPagar) => DetalheContaApagar(contaAPagar));
+            }
+        }
+
+        private async void DetalheContaApagar(ContaAPaga contaAPagar)
+        {
+            var test = contaAPagar;
+        }
     }
+
 }
