@@ -73,10 +73,11 @@ namespace TotvsPrevent.Services
                 client.BaseAddress = new Uri(urlBase);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", acessToken);
 
-                var url = $"{preFix}{controller}";
+                var url = $"{preFix}{controller}{action}";
                 var response = await client.GetAsync(url);
                 var answer = await response.Content.ReadAsStringAsync();
 
+                
                 if (!response.IsSuccessStatusCode)
                 {
                     return new Response
@@ -86,12 +87,12 @@ namespace TotvsPrevent.Services
                     };
                 }
 
-                var list = JsonConvert.DeserializeObject<List<T>>(answer);
+                var objetoResult = JsonConvert.DeserializeObject<T>(answer);
 
                 return new Response
                 {
                     IsSuccess = true,
-                    Result = list,
+                    Result = objetoResult,
                 };
 
             }
@@ -104,6 +105,45 @@ namespace TotvsPrevent.Services
                 };
             }
         }
-        
+
+
+        public async Task<Response> GetList<T>(string urlBase)
+        {
+            try
+            {
+                var client = new HttpClient();
+                var response = await client.GetAsync(urlBase);
+                var answer = await response.Content.ReadAsStringAsync();
+
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = response.RequestMessage.ToString(),
+                    };
+                }
+
+                var objetoResult = JsonConvert.DeserializeObject<T>(answer);
+
+                var teste = "";
+                return new Response
+                {
+                    IsSuccess = true,
+                    Result = answer,
+                };
+
+            }
+            catch (Exception e)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = e.Message,
+                };
+            }
+        }
+
     }
 }

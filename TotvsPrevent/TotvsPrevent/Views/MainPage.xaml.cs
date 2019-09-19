@@ -23,10 +23,10 @@ namespace TotvsPrevent.Views
             _menuLista = ItemService.GetMenuItens(Settings.Produto);
             navigationDrawerList.ItemsSource = _menuLista;
             ImgCicle.Source = ImageSource.FromResource("TotvsPrevent.Resource.perfil_icon.png");
-            if(Settings.Produto == "Protheus")
+            //if(Settings.Produto == "Protheus")
             Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(HomePageMaster)));
-            else
-            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(RmHomePage)));
+            //else
+            //Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(RmHomePage)));
         }
 
         private void OnMenuItemSelected(object sender, SelectedItemChangedEventArgs e)

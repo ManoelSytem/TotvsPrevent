@@ -21,11 +21,6 @@ namespace TotvsPrevent.Views
 
         private void Init()
         {
-            Picker.ItemsSource = new List<Produto>()
-            {
-                new Produto { Id=1,Nome="RM"},
-                new Produto { Id=2, Nome = "Protheus" }
-            };
            
            Entry_Login.Completed += (s, e) => Entry_Senha.Focus();
            Entry_Senha.Completed += (s, e) => EntrarProcedure(s, e);
@@ -58,7 +53,6 @@ namespace TotvsPrevent.Views
 
         private async void Picker_OnSelectIndexCanger(object sender, EventArgs e)
         {
-            var proSelect = (Produto)Picker.SelectedItem;
            
         }
     }

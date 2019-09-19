@@ -10,7 +10,7 @@ namespace TotvsPrevent.Models
         public string filial { get; set; }
         public List<string> Total { get; set; }
 
-        public List<ContaApagarEmpresa> ContaApagarEmpresa { get; set; }
+        public List<ContaApagarEmpresa> ContaApagarEmpresa;
 
     }
 }

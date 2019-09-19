@@ -81,13 +81,13 @@ namespace TotvsPrevent.ViewModels
         {
             get
             {
-                return new RelayCommand<object>((produto) => Login(produto));
+                return new RelayCommand(Login);
             }
         }
 
-        private async void Login(object produto)
+        private async void Login()
         {
-            var produtoSelect = (Produto)produto;
+            var produtoSelect = "Protheus";
 
 
             if (string.IsNullOrEmpty(this.Username) || string.IsNullOrEmpty(this.Password))
@@ -103,41 +103,47 @@ namespace TotvsPrevent.ViewModels
             }
 
 
-            this.IsEnabled = false;
-            this.IsRunning = true;
-
-            var connection = await this.apiService.CheckConnection();
-            if (!connection.IsSuccess)
+            if (!(this.Username == "totvs" || this.Password == "fabrica"))
             {
-                this.IsRunning = false;
-                this.IsEnabled = true;
-                await Application.Current.MainPage.DisplayAlert("Mensagem", connection.Message, "Ok");
+                await Application.Current.MainPage.DisplayAlert("Mensagem", "Usuário e senha  incorretos!.", "Ok");
                 return;
             }
 
-            HttpResponseMessage result = new HttpResponseMessage();
+            //this.IsEnabled = false;
+            //this.IsRunning = true;
 
-            var url = Application.Current.Resources["UrlAPIAutentication"].ToString();
+            //var connection = await this.apiService.CheckConnection();
+            //if (!connection.IsSuccess)
+            //{
+            //    this.IsRunning = false;
+            //    this.IsEnabled = true;
+            //    await Application.Current.MainPage.DisplayAlert("Mensagem", connection.Message, "Ok");
+            //    return;
+            //}
 
-            result = await this.apiService.GetToken(url, this.Username, this.Password);
+            //HttpResponseMessage result = new HttpResponseMessage();
 
-            var resultObjeto = result.Content.ReadAsStringAsync().Result;
+            //var url = Application.Current.Resources["UrlAPIAutentication"].ToString();
 
-            Cliente cliente = JsonConvert.DeserializeObject<Cliente>(resultObjeto);
+            //result = await this.apiService.GetToken(url, this.Username, this.Password);
 
-            if (!result.IsSuccessStatusCode || string.IsNullOrEmpty(cliente.token))
-            {
-                this.IsRunning = false;
-                this.IsEnabled = true;
-                await Application.Current.MainPage.DisplayAlert("Mensagem", "Credênciais não corresponde! Atenção para realizar login conecte a rede TOTVSBA.", "Ok");
-                return;
-            }
-            else
-            {
-                if (this.IsRemembered == true)
+            //var resultObjeto = result.Content.ReadAsStringAsync().Result;
+
+            //Cliente cliente = JsonConvert.DeserializeObject<Cliente>(resultObjeto);
+
+            //if (!result.IsSuccessStatusCode || string.IsNullOrEmpty(cliente.token))
+            //{
+            //    this.IsRunning = false;
+            //    this.IsEnabled = true;
+            //    await Application.Current.MainPage.DisplayAlert("Mensagem", "Credênciais não corresponde! Atenção para realizar login conecte a rede TOTVSBA.", "Ok");
+            //    return;
+            //}
+            //else
+            //{
+            if (this.IsRemembered == true)
                 {
-                    Settings.Produto = produtoSelect.Nome;
-                    Settings.AccessToken = cliente.token;
+                    //Settings.Produto = produtoSelect.Nome;
+                    //Settings.AccessToken = cliente.token;
                     Settings.IsRemembered = "true";
                     Settings.Username = this.Username;
                     Settings.Password = this.Password;
@@ -145,24 +151,24 @@ namespace TotvsPrevent.ViewModels
                 else
                 {
                     Settings.IsRemembered = "false";
-                    Settings.Produto = produtoSelect.Nome;
-                    Settings.AccesstokenTemp = cliente.token;
+                    //Settings.Produto = produtoSelect.Nome;
+                    //Settings.AccesstokenTemp = cliente.token;
                 }
 
-                if (produtoSelect.Nome == "Protheus")
+                if (produtoSelect  == "Protheus")
                 {
                     this.IsRunning = false;
                     this.IsEnabled = true;
                     Application.Current.MainPage = new MainPage();
 
                 }
-                else if (produtoSelect.Nome == "RM")
+                else if (produtoSelect == "RM")
                 {
                     this.IsRunning = false;
                     this.IsEnabled = true;
                     Application.Current.MainPage = new MainPage();
                 }
-            }
+            //}
         }
 
     }

@@ -25,7 +25,17 @@ namespace TotvsPrevent.Services
                 Descricao = "Gestão",
                 Imagem = null,
                 Modulo = "F",
-                TargetType = typeof(ContaPagarPage)
+                TargetType = typeof(PeriodoPage)
+            });
+
+
+            ListFuncionalidade.Add(new Funcionalidade()
+            {
+                Nome = "Contas a receber",
+                Descricao = "Gestão",
+                Imagem = null,
+                Modulo = "F",
+                TargetType = typeof(PeriodoPageContaReceber)
             });
 
             ListFuncionalidade.Add(new Funcionalidade()

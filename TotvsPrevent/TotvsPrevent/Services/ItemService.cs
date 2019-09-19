@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using TotvsPrevent.Models;
 using TotvsPrevent.Views;
+using TotvsPrevent.Views.Configurador;
 using TotvsPrevent.Views.RM;
 using Xamarin.Forms;
 
@@ -20,21 +21,27 @@ namespace TotvsPrevent.Services
             if (produto == "Protheus")
             {
                 var HomeView = new MasterPageItem() { Title = "Início", Icon = ImageSource.FromResource("TotvsPrevent.Resource.home_icon.png"), TargetType = typeof(HomePageMaster) };
-                var HomeProthues = new MasterPageItem() { Title = "Protheus", Icon = ImageSource.FromResource("TotvsPrevent.Resource.logo.png"), TargetType = typeof(HomePage) };
+                var HomeProthues = new MasterPageItem() { Title = "Serviços", Icon = ImageSource.FromResource("TotvsPrevent.Resource.logo.png"), TargetType = typeof(HomePageMaster) };
+                var Configuracao = new MasterPageItem() { Title = "Configuração", Icon = ImageSource.FromResource("TotvsPrevent.Resource.logo.png"), TargetType = typeof(ConfigEmpresa) };
                 var Logaout = new MasterPageItem() { Title = "Sair", Icon = ImageSource.FromResource("TotvsPrevent.Resource.logo.png"), TargetType = typeof(LoginPage) };
+
                 menuLista.Add(HomeView);
                 menuLista.Add(HomeProthues);
+                menuLista.Add(Configuracao);
                 menuLista.Add(Logaout);
 
             }
             else if (produto == "RM")
             {
 
-                var HomeView = new MasterPageItem() { Title = "Início", Icon = ImageSource.FromResource("TotvsPrevent.Resource.home_icon.png"), TargetType = typeof(RmHomePage) };
-                var HomeRM = new MasterPageItem() { Title = "RM", Icon = ImageSource.FromResource("TotvsPrevent.Resource.logo.png"), TargetType = typeof(RmHomePage) };
+                var HomeView = new MasterPageItem() { Title = "Início", Icon = ImageSource.FromResource("TotvsPrevent.Resource.home_icon.png"), TargetType = typeof(HomePageMaster) };
+                var HomeRM = new MasterPageItem() { Title = "Serviços", Icon = ImageSource.FromResource("TotvsPrevent.Resource.logo.png"), TargetType = typeof(HomePageMaster) };
                 var Logaout = new MasterPageItem() { Title = "Sair", Icon = ImageSource.FromResource("TotvsPrevent.Resource.logo.png"), TargetType = typeof(LoginPage) };
+                //var Configuracao = new MasterPageItem() { Title = "Configuração", Icon = ImageSource.FromResource("TotvsPrevent.Resource.logo.png"), TargetType = typeof(ConfigEmpresa) };
+
                 menuLista.Add(HomeView);
                 menuLista.Add(HomeRM);
+                //menuLista.Add(Configuracao);
                 menuLista.Add(Logaout);
 
             }

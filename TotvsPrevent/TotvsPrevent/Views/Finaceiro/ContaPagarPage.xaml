@@ -5,19 +5,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:viewModels="clr-namespace:TotvsPrevent.ViewModels;assembly=TotvsPrevent"
-             x:Class="TotvsPrevent.Views.Finaceiro.ContaPagarPage" Title="Contas a pagar"
-             x:Name="ContaPagarPageView">
+             x:Class="TotvsPrevent.Views.Finaceiro.ContaPagarPage" Title="{Binding Titulo}"
+             x:Name="ContaPagarPageView"
+            >
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
             <On Platform="iOS" Value="0, 20, 0, 0" />
         </OnPlatform>
     </ContentPage.Padding>
-    
-    <ContentPage.BindingContext>
-        <viewModels:ContaApagarViewModel/>
-    </ContentPage.BindingContext>
-   
-    <ListView x:Name="ListViewContaApagar" ItemsSource="{Binding ContaApagar}"
+    <ListView x:Name="ListViewContaApagar" 
            HasUnevenRows="True"
            BackgroundColor="#ecf0f1"
            IsRefreshing="{Binding IsRefreshing}"
@@ -29,32 +25,20 @@
                 <Grid  Margin="5,8,0,0">
                     <Grid.ColumnDefinitions >
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="0.5*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50" />
-                        <RowDefinition Height="25" />
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Label  Text="Período"
+                    <Label  Grid.Column="0" Grid.Row="0" Text="Resultado"
                                Margin="8,0,8,0"
                               FontSize="14"/>
-                    <DatePicker  Format="D"
-                                 TextColor="#1a73e8"
-                            Margin="8,0,10,-10"
-                          Date="06/21/2018" />
-                    <Label  Grid.Column="0"
-                               Grid.Row="1" Text="Hoje"
-                               Margin="8,0,8,0"
-                               FontSize="14" 
-                              FontAttributes="Bold"
-                              TextColor="#1a73e8"/>
                 </Grid>
             </StackLayout>
         </ListView.Header>
         <ListView.ItemTemplate  >
             <DataTemplate>
                 <ViewCell>
-                    <StackLayout Padding="10" Spacing="10" Margin="2">
+                        <StackLayout Padding="10" Spacing="10" Margin="2">
                         <Grid Margin="0,8,0,0" Padding="10">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
@@ -66,22 +50,18 @@
                                             <ColumnDefinition/>
                                         </Grid.ColumnDefinitions>
                                     <StackLayout  Orientation="Vertical"  Grid.Column="0" Padding="10">
-                                            <Label  Text="{Binding Empresa}" 
-                                   HorizontalTextAlignment="Start" FontSize="Large" TextColor="Black"/>
+                                        <Label  x:Name="Período" Text="{Binding periodo, StringFormat='Período : {0:F1}'}"
+                                   HorizontalTextAlignment="Start" FontSize="Small" TextColor="#1a73e8"/>
                                             <Label>
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <FormattedString.Spans>
-                                                        <Span Text="Total " FontSize="Small"/>
-                                                            <Span Text="R$ 3.246,00" FontSize="Small" FontAttributes="Bold" />
+                                                        <Span Text="Total" FontSize="Small"/>
+                                                        <Span Text="{Binding total,  StringFormat=' : R$ {0:C2}'}" FontSize="Small" FontAttributes="Bold" />
                                                     </FormattedString.Spans>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                        <Label Text="Status" 
-                                   HorizontalTextAlignment="Start" FontSize="Medium" TextColor="Black"/>
-                                        <Label Text="Pendente" 
-                                   HorizontalTextAlignment="Start" FontSize="Small" TextColor="Orange"/>
                                     </StackLayout>
                                         <StackLayout Orientation="Vertical" Grid.Column="1" Padding="10">
                                             <Label Text="Data" 
@@ -97,14 +77,16 @@
                                                 </Label.FormattedText>
                                             </Label>
                                             <BoxView Color="Gray" HorizontalOptions="Fill" HeightRequest="1"/>
-                                        <Button Command="{Binding Path=BindingContext.Detalhe, Source={x:Reference ContaPagarPageView}}"
+                                        <!--<Button Command="{Binding NavigateCommand, Source={x:Reference ContaPagarPageView}}"
 								CommandParameter="{Binding .}" BackgroundColor="#C1802A" TextColor="White" BorderRadius="30" 
+                                        Text="Detalhe" FontSize="Small"/>-->
+                                        <Button Clicked="ObterDetalheRoot" BackgroundColor="#C1802A" TextColor="White" BorderRadius="30" 
                                         Text="Detalhe" FontSize="Small"/>
-                                        </StackLayout>
+                                    </StackLayout>
                                     </Grid>
                                 </Frame>
                             </Grid>
-                        </StackLayout>
+                    </StackLayout>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>

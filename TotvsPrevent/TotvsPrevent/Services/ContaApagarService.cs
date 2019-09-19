@@ -25,13 +25,32 @@ namespace TotvsPrevent.Services
            
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var urlPrefix = Application.Current.Resources["UrlPrefix"].ToString();
-            var prefixControl = Application.Current.Resources["UrlPrefixController"].ToString();
-            var action = Application.Current.Resources["UrlContaApagarAction"].ToString();
+            var prefixControl = Application.Current.Resources["UrlPrefixControllerContaApagar"].ToString();
+            var action = "emp=99&fil=01";
 
-
-            var response = await this.apiService.GetList<ContaAPaga>(url, urlPrefix, prefixControl, action, Settings.IsRemembered != "false" ? Settings.AccessToken : Settings.AccesstokenTemp);
+            var response = await this.apiService.GetList<Root>(url, urlPrefix, prefixControl, action, Settings.IsRemembered != "false" ? Settings.AccessToken : Settings.AccesstokenTemp);
            
 
+            return response;
+        }
+
+        public async Task<Response> GetAllContaAreceberAll()
+        {
+
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var urlPrefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var prefixControl = Application.Current.Resources["UrlPrefixControllerContaReceber"].ToString();
+            var action = "emp=99&fil=01";
+
+            var response = await this.apiService.GetList<Root>(url, urlPrefix, prefixControl, action, Settings.IsRemembered != "false" ? Settings.AccessToken : Settings.AccesstokenTemp);
+
+
+            return response;
+        }
+
+        public async Task<Response> GetAllUrl(string url)
+        {
+            var response = await this.apiService.GetList<Root>(url);
             return response;
         }
     }

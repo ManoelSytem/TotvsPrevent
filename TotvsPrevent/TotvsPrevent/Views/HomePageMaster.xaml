@@ -47,7 +47,7 @@
                             JustifyContent="Center"
                         >
                             <Label 
-                                Text="Protheus"
+                                Text="Totvs Prevent"
                                 FontSize="30"
                             />
                         </FlexLayout>

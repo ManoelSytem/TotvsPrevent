@@ -18,17 +18,15 @@ namespace TotvsPrevent
         public App()
         {
             InitializeComponent();
-            if (Settings.IsRemembered == "true" && Settings.Username != string.Empty && Settings.Password != string.Empty && Settings.Produto != string.Empty)
-            {
-                Validation(Settings.IsRemembered, Settings.Username, Settings.Password, Settings.Produto);
-            }
-            else
-            {
-                MainPage = new NavigationPage(new LoginPage());
-            }
-
-            //MainPage = new NavigationPage(new Teste());
-
+            //if (Settings.IsRemembered == "true" && Settings.Username != string.Empty && Settings.Password != string.Empty && Settings.Produto != string.Empty)
+            //{
+            //    Validation(Settings.IsRemembered, Settings.Username, Settings.Password, Settings.Produto);
+            //}
+            //else
+            //{
+            //    MainPage = new NavigationPage(new LoginPage());
+            //}
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

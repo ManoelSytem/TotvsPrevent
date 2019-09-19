@@ -6,9 +6,12 @@ namespace TotvsPrevent.Models
 {
     public class ContaApagarEmpresa
     {
+        public string Empresa { get; set; }
         public string Servico { get; set; }
+
         public string Dapartamento { get; set; }
-        public string valor { get; set; }
+        
+        public string Valor { get; set; }
 
     }
 }

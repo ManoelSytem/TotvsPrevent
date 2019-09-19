@@ -6,7 +6,13 @@ namespace TotvsPrevent.ViewModels.Finaceiro.ContaApagarDetalhe
 {
     public class DetalheContaAPagarViewModel : BaseViewModel
     {
-        
+        public string empresa;
+        public string Empresa
+        {
+            get { return this.empresa; }
+            set { this.SetValue(ref this.empresa, value); }
+        }
+
         public string dapartamento;
         public string Dapartamento
         {

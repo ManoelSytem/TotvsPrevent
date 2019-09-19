@@ -8,9 +8,9 @@ using Xamarin.Forms;
 using TotvsPrevent.Views.Finaceiro;
 using TotvsPrevent.ViewModels.Finaceiro.ContaApagarDetalhe;
 
-namespace TotvsPrevent.ViewModels
+namespace TotvsPrevent.ViewModels.Finaceiro
 {
-    public class ContaApagarViewModel : BaseViewModel
+    public class ContaAreceberViewModel : BaseViewModel
     {
         private ContaApagarService contaApagarService;
 
@@ -61,7 +61,7 @@ namespace TotvsPrevent.ViewModels
             get { return this.isRefreshing; }
             set { this.SetValue(ref this.isRefreshing, value); }
         }
-        public ContaApagarViewModel()
+        public ContaAreceberViewModel()
         {
             contaApagarService = new ContaApagarService();
             apiService = new ApiService();
@@ -81,7 +81,7 @@ namespace TotvsPrevent.ViewModels
                 return;
             }
 
-            var response = await this.contaApagarService.GetAll();
+            var response = await this.contaApagarService.GetAllContaAreceberAll();
 
             var list = (Root)response.Result;
             List<Root> ListRoot = new List<Root>();

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage  xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TotvsPrevent.Views.Configurador.ConfigEmpresa">
+    <Grid>
+        <StackLayout>
+            <StackLayout Padding="30" Spacing="2" VerticalOptions="CenterAndExpand" 
+                             HorizontalOptions="FillAndExpand">
+                <Label Text="Label UrlApi" TextColor="#555" FontSize="20" FontAttributes="Bold"/>
+                <Entry  x:Name="UrlApiEntry" Placeholder="Url" PlaceholderColor="#CCC" 
+                            FontSize="20" TextColor="#555" />
+                <Label x:Name="resultText"  Text="Result" TextColor="#555" FontSize="20" FontAttributes="Bold"/>
+            </StackLayout>
+            <StackLayout Padding="30" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+                <Button Clicked="ObterJsonAsync" x:Name="BtnLogin" Text="Excutar" BorderColor="#CB9600" BackgroundColor="#F4B400" />
+            </StackLayout>
+        </StackLayout>
+        <!-- Definimos '{Binding IsBusy}' no code-behind -->
+        <ActivityIndicator x:Name="activityIndicator1" IsRunning="{Binding IsBusy}" 
+                    VerticalOptions="Center" HorizontalOptions="Center" Color="Blue" />
+    </Grid>
+</ContentPage>

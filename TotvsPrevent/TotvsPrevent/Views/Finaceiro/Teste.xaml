@@ -20,49 +20,11 @@
         </StackLayout>
         <StackLayout Orientation="Vertical" Margin="0,15" HorizontalOptions="Center" VerticalOptions="Center">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Label Text="Empresa" TextColor="White" FontSize="60" FontAttributes="Bold" VerticalOptions="Center"/>
+                <Label x:Name="labelEmpresa" Text="" TextColor="White" FontSize="40" FontAttributes="Bold" VerticalOptions="Center"/>
             </StackLayout>
-            <Label Text="Gestão de contas a pagar" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
-            <Label Text="June 15, 09:03 AM" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+            <Label Text="Gestão de Contas" TextColor="White" FontSize="16" HorizontalOptions="Center"/>
+            <Label Text="Agosto 02, 09:03 AM" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
         </StackLayout>
-        <Frame Grid.Row="1" HasShadow="True" CornerRadius="10" Margin="20,-40,20,0" Padding="0" HeightRequest="120" VerticalOptions="Start">
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <StackLayout Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
-                    <Image WidthRequest="40" BackgroundColor="#00FFFF" HeightRequest="25" HorizontalOptions="Center"/>
-                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                        <Label Text="30%" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        <Label Text="Limpeza" TextColor="#7D7D7D" FontSize="11" HorizontalOptions="Center"/>
-                    </StackLayout>
-                </StackLayout>
-                <StackLayout Grid.Column="1" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
-                    <Image WidthRequest="40" BackgroundColor="#FFA500" HeightRequest="25" HorizontalOptions="Center"/>
-                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                        <Label Text="10%" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        <Label Text="Fornecedores" TextColor="#7D7D7D" FontSize="11" HorizontalOptions="Center"/>
-                    </StackLayout>
-                </StackLayout>
-                <StackLayout Grid.Column="2" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
-                    <Image WidthRequest="40" BackgroundColor="#FF4500" HeightRequest="25" HorizontalOptions="Center"/>
-                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                        <Label Text="40%" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        <Label Text="Suprimentos" TextColor="#7D7D7D" FontSize="11" HorizontalOptions="Center"/>
-                    </StackLayout>
-                </StackLayout>
-                <StackLayout Grid.Column="3" Orientation="Vertical" Spacing="10" HorizontalOptions="CenterAndExpand">
-                    <Image WidthRequest="40" BackgroundColor="#FF4500" HeightRequest="25" HorizontalOptions="Center"/>
-                    <StackLayout Spacing="7" HorizontalOptions="CenterAndExpand">
-                        <Label Text="24%" TextColor="Black" FontSize="14" FontAttributes="Bold" HorizontalOptions="Center"/>
-                        <Label Text="Diversos" TextColor="#7D7D7D" FontSize="11" HorizontalOptions="Center"/>
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
-        </Frame>
         <StackLayout Grid.Row="2" BackgroundColor="Transparent" Orientation="Horizontal" Margin="20" HorizontalOptions="End">
             <ImageButton x:Name="ListBtn" WidthRequest="15" HeightRequest="15" />
             <ImageButton x:Name="GridBtn"  WidthRequest="15" HeightRequest="15"/>
@@ -79,11 +41,12 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label  BackgroundColor="Red" Text="{Binding Servico}" TextColor="#757575" FontSize="14" VerticalOptions="Center" />
-                                <StackLayout Grid.Column="2" Orientation="Horizontal" Margin="20,0" HorizontalOptions="End" VerticalOptions="Center">
-                                    <Label BackgroundColor="Blue" Text="asdss" TextColor="Black" FontSize="14" FontAttributes="Bold" VerticalOptions="Start"/>
-                                    <Label Text="{Binding Valor}" TextColor="Black" FontSize="30" FontAttributes="Bold" VerticalOptions="Center"/>
-                                    <Label Text="°C" TextColor="Black" FontSize="15" VerticalOptions="Center"/>
+                                <Label  Text="{Binding Servico}" TextColor="#757575" FontSize="14" VerticalOptions="Start" />
+                                <StackLayout Grid.Column="1" Orientation="Horizontal" Margin="20,0" HorizontalOptions="End" VerticalOptions="Center">
+                                    <Label Text="{Binding Dapartamento}" TextColor="Black" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout  Grid.Column="2" Orientation="Horizontal" Margin="20,0" HorizontalOptions="End" VerticalOptions="Start">
+                                    <Label  Text="{Binding Valor}" TextColor="Black" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
