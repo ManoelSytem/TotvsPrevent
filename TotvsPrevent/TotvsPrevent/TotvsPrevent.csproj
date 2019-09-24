@@ -54,6 +54,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\Finaceiro\RootPageFinaceiro.xaml.cs">
+      <DependentUpon>RootPageFinaceiro.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Finaceiro\FinaceiroViewPage.xaml.cs">
       <DependentUpon>FinaceiroViewPage.xaml</DependentUpon>
     </Compile>
@@ -72,7 +75,7 @@
     <EmbeddedResource Update="Views\ConstrucaoView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Finaceiro\ContaPagarPage.xaml">
+    <EmbeddedResource Update="Views\Finaceiro\RootPageFinaceiro.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Finaceiro\FinaceiroViewPage.xaml">
@@ -85,9 +88,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Finaceiro\PeriodoPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Finaceiro\PeriodoPageContaReceber.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Finaceiro\Teste.xaml">
@@ -116,5 +116,6 @@
 
   <ItemGroup>
     <Folder Include="Connected Services\" />
+    <Folder Include="ViewModels\Finaceiro\" />
   </ItemGroup>
 </Project>

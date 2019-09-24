@@ -6,13 +6,23 @@ using TotvsPrevent.Models;
 using TotvsPrevent.Services;
 using Xamarin.Forms;
 using TotvsPrevent.Views.Finaceiro;
-using TotvsPrevent.ViewModels.Finaceiro.ContaApagarDetalhe;
+
 
 namespace TotvsPrevent.ViewModels
 {
-    public class ContaApagarViewModel : BaseViewModel
+    public class RootViewModel : BaseViewModel
     {
-        private ContaApagarService contaApagarService;
+        private RootService RootService;
+
+        private string url;
+
+        private string urlPrefix;
+
+        private string prefixControl;
+
+        private string action;
+
+        private string service;
 
         private ApiService apiService;
 
@@ -61,11 +71,13 @@ namespace TotvsPrevent.ViewModels
             get { return this.isRefreshing; }
             set { this.SetValue(ref this.isRefreshing, value); }
         }
-        public ContaApagarViewModel()
+        public RootViewModel(string _service)
         {
-            contaApagarService = new ContaApagarService();
+            RootService = new RootService();
             apiService = new ApiService();
+            this.service = _service;
             LoadContaApagar();
+
         }
 
 
@@ -80,9 +92,26 @@ namespace TotvsPrevent.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Mensagem", connection.Message, "Ok");
                 return;
             }
+           
+            if (this.service == "Contas a receber")
+            {   
+                this.url = Application.Current.Resources["UrlAPI"].ToString();
+                this.urlPrefix = Application.Current.Resources["UrlPrefix"].ToString();
+                this.prefixControl = Application.Current.Resources["UrlPrefixControllerContaReceber"].ToString();
+                this.action = "emp=99&fil=01";
+            }
+            else
+            {
+                this.url = Application.Current.Resources["UrlAPI"].ToString();
+                this.urlPrefix = Application.Current.Resources["UrlPrefix"].ToString();
+                this.prefixControl = Application.Current.Resources["UrlPrefixControllerContaApagar"].ToString();
+                this.action = "emp=99&fil=01";
+            }
+      
+            
+            var response = await this.RootService.GetAll(this.url,this.urlPrefix, this.prefixControl,this.action);
 
-            var response = await this.contaApagarService.GetAll();
-
+            
             var list = (Root)response.Result;
             List<Root> ListRoot = new List<Root>();
             ListRoot.Add(list);
@@ -91,7 +120,7 @@ namespace TotvsPrevent.ViewModels
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Mensagem", connection.Message, "Ok");
+                await Application.Current.MainPage.DisplayAlert("Mensagem", "Tempo de resposta do servidor inesperado Tente novamente", "Ok");
                 return;
             }
 

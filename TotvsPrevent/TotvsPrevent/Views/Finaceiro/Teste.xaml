@@ -41,12 +41,11 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label  Text="{Binding Servico}" TextColor="#757575" FontSize="14" VerticalOptions="Start" />
                                 <StackLayout Grid.Column="1" Orientation="Horizontal" Margin="20,0" HorizontalOptions="End" VerticalOptions="Center">
-                                    <Label Text="{Binding Dapartamento}" TextColor="Black" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
+                                    <Label Text="Total :" TextColor="Black" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
                                 </StackLayout>
                                 <StackLayout  Grid.Column="2" Orientation="Horizontal" Margin="20,0" HorizontalOptions="End" VerticalOptions="Start">
-                                    <Label  Text="{Binding Valor}" TextColor="Black" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
+                                    <Label  Text="{Binding total}" TextColor="Black" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>

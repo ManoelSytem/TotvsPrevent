@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using TotvsPrevent.Models;
+using TotvsPrevent.Views;
 using TotvsPrevent.Views.Finaceiro;
 
 namespace TotvsPrevent.Services
@@ -35,7 +36,7 @@ namespace TotvsPrevent.Services
                 Descricao = "Gestão",
                 Imagem = null,
                 Modulo = "F",
-                TargetType = typeof(PeriodoPageContaReceber)
+                TargetType = typeof(PeriodoPage)
             });
 
             ListFuncionalidade.Add(new Funcionalidade()
@@ -44,7 +45,7 @@ namespace TotvsPrevent.Services
                 Descricao = "Gestão",
                 Imagem = null,
                 Modulo = "F",
-                TargetType = typeof(Teste)
+                TargetType = typeof(ConstrucaoView)
             });
            
 

@@ -27,7 +27,7 @@ namespace TotvsPrevent.Views.Configurador
 
         private async void ObterJsonAsync(object sender, EventArgs e)
         {
-            ContaApagarService contaApagarService = new ContaApagarService();
+            RootService RootService = new RootService();
             ApiService apiService = new ApiService();
 
 
@@ -42,7 +42,7 @@ namespace TotvsPrevent.Views.Configurador
 
             Response response = new Response();
 
-            response = await contaApagarService.GetAllUrl(UrlApiEntry.Text);
+            response = await RootService.GetAllUrl(UrlApiEntry.Text);
 
            
             if (response.IsSuccess)

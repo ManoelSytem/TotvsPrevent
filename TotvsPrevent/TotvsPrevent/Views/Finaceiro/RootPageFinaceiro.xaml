@@ -5,8 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:viewModels="clr-namespace:TotvsPrevent.ViewModels;assembly=TotvsPrevent"
-             x:Class="TotvsPrevent.Views.Finaceiro.ContaPagarPage" Title="{Binding Titulo}"
-             x:Name="ContaPagarPageView"
+             x:Class="TotvsPrevent.Views.Finaceiro.RootPageFinaceiro" Title="{Binding Titulo}"
+             x:Name="RootPageFin"
             >
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
@@ -18,6 +18,7 @@
            BackgroundColor="#ecf0f1"
            IsRefreshing="{Binding IsRefreshing}"
            IsPullToRefreshEnabled="True"
+           ItemTapped="DetalheNivel"
            RefreshCommand="{Binding RefreshCommand}" >
         <ListView.Header>
             <StackLayout
@@ -35,7 +36,7 @@
                 </Grid>
             </StackLayout>
         </ListView.Header>
-        <ListView.ItemTemplate  >
+        <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
                         <StackLayout Padding="10" Spacing="10" Margin="2">
@@ -66,7 +67,7 @@
                                         <StackLayout Orientation="Vertical" Grid.Column="1" Padding="10">
                                             <Label Text="Data" 
                                               HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>
-                                             <Label Text="31/08/2018" 
+                                        <Label Text="31/08/2018" 
                                               HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>
                                              <Label>
                                                 <Label.FormattedText>
@@ -76,12 +77,6 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <BoxView Color="Gray" HorizontalOptions="Fill" HeightRequest="1"/>
-                                        <!--<Button Command="{Binding NavigateCommand, Source={x:Reference ContaPagarPageView}}"
-								CommandParameter="{Binding .}" BackgroundColor="#C1802A" TextColor="White" BorderRadius="30" 
-                                        Text="Detalhe" FontSize="Small"/>-->
-                                        <Button Clicked="ObterDetalheRoot" BackgroundColor="#C1802A" TextColor="White" BorderRadius="30" 
-                                        Text="Detalhe" FontSize="Small"/>
                                     </StackLayout>
                                     </Grid>
                                 </Frame>

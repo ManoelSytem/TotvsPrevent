@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TotvsPrevent.Models;
 using TotvsPrevent.Services;
+using TotvsPrevent.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,18 +16,23 @@ namespace TotvsPrevent.Views.Finaceiro
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PeriodoPage : ContentPage
     {
+        public Funcionalidade func;
         public Command ObterRootRaiz { private set; get; }
-        public PeriodoPage()
+        public PeriodoPage(Funcionalidade _func)
         {
             InitializeComponent();
+          
+            BindingContext = new RootViewModel(_func.Nome);
+            this.func = _func;
+
             FlowListView.Init();
             ObterRootRaiz = new Command<string>(
           async (string periodo) =>
           {
            if (periodo != null)
             {
-                  ContaApagarService contaApagarService = new ContaApagarService();
-                  var response = await contaApagarService.GetAll();
+                  RootService RootService = new RootService();
+                  var response = await RootService.ObterServico(this.func.Nome);
                  
                   var list = (Root)response.Result;
                   List<Dados> listDados = new List<Dados>();
@@ -41,7 +47,7 @@ namespace TotvsPrevent.Views.Finaceiro
                               dadosFiltro.Add(dados);
                           }
                   }
-                  await Navigation.PushAsync(new ContaPagarPage(dadosFiltro));
+                  await Navigation.PushAsync(new RootPageFinaceiro(dadosFiltro));
                   }
               }
           });

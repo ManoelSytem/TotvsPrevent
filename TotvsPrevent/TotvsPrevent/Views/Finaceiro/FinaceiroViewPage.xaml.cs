@@ -27,21 +27,22 @@ namespace TotvsPrevent.Views.Finaceiro
         }
 
 
-        private async void FuncionalidadeSelected(object sender, SelectedItemChangedEventArgs e)
+
+        private async void FuncionalidadeSelected(object sender, ItemTappedEventArgs e)
         {
-            var item = (Funcionalidade)e.SelectedItem;
+            var item = e.Item as Funcionalidade;
             Type pagina = item.TargetType;
 
-            if (pagina == null)
+            if (item == null)
             {
 
                 return;
             }
             else
             {
-                await Navigation.PushAsync((Page)Activator.CreateInstance(pagina), true);
+                await Navigation.PushAsync(new PeriodoPage(item));
+                ((ListView)sender).SelectedItem = null;
             }
-
         }
     }
 }

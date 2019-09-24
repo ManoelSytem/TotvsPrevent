@@ -21,8 +21,6 @@ namespace TotvsPrevent.ViewModels
         public string produto { get; set; }
 
 
-
-
         public LoginViewModel()
         {
             this.apiService = new ApiService();
@@ -89,16 +87,31 @@ namespace TotvsPrevent.ViewModels
         {
             var produtoSelect = "Protheus";
 
+            this.IsEnabled = false;
+            this.IsRunning = true;
+
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert("Mensagem", connection.Message, "Ok");
+                return;
+            }
+
 
             if (string.IsNullOrEmpty(this.Username) || string.IsNullOrEmpty(this.Password))
             {
                 await Application.Current.MainPage.DisplayAlert("Mensagem", "Usuário e senha não informado.", "Ok");
+                this.IsEnabled = true;
+                this.IsRunning = false;
                 return;
             }
 
             if (produtoSelect == null)
             {
                 await Application.Current.MainPage.DisplayAlert("Mensagem", "Por gentileza selecione a linha do produto.", "Ok");
+                
                 return;
             }
 
@@ -106,20 +119,10 @@ namespace TotvsPrevent.ViewModels
             if (!(this.Username == "totvs" || this.Password == "fabrica"))
             {
                 await Application.Current.MainPage.DisplayAlert("Mensagem", "Usuário e senha  incorretos!.", "Ok");
+                this.IsEnabled = true;
+                this.IsRunning = false;
                 return;
             }
-
-            //this.IsEnabled = false;
-            //this.IsRunning = true;
-
-            //var connection = await this.apiService.CheckConnection();
-            //if (!connection.IsSuccess)
-            //{
-            //    this.IsRunning = false;
-            //    this.IsEnabled = true;
-            //    await Application.Current.MainPage.DisplayAlert("Mensagem", connection.Message, "Ok");
-            //    return;
-            //}
 
             //HttpResponseMessage result = new HttpResponseMessage();
 

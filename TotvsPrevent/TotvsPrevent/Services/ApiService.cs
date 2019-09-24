@@ -13,7 +13,6 @@ namespace TotvsPrevent.Services
     
     public class ApiService
     {
-
         public async Task<Response> CheckConnection()
         {
             if (!CrossConnectivity.Current.IsConnected)
@@ -46,8 +45,7 @@ namespace TotvsPrevent.Services
         {
             try
             {
-                HttpClient client = new HttpClient();
-                
+                var client = new HttpClient();
 
                 var objeto = new { username = user , password = senha  };
 
@@ -69,15 +67,14 @@ namespace TotvsPrevent.Services
         {
             try
             {
-                var client = new HttpClient();
+                HttpClient client = new HttpClient();
                 client.BaseAddress = new Uri(urlBase);
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", acessToken);
 
                 var url = $"{preFix}{controller}{action}";
                 var response = await client.GetAsync(url);
                 var answer = await response.Content.ReadAsStringAsync();
-
-                
+               
                 if (!response.IsSuccessStatusCode)
                 {
                     return new Response
@@ -127,11 +124,10 @@ namespace TotvsPrevent.Services
 
                 var objetoResult = JsonConvert.DeserializeObject<T>(answer);
 
-                var teste = "";
                 return new Response
                 {
                     IsSuccess = true,
-                    Result = answer,
+                    Result = objetoResult,
                 };
 
             }

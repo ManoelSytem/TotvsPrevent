@@ -8,9 +8,7 @@
              xmlns:viewModels="clr-namespace:TotvsPrevent.ViewModels;assembly=TotvsPrevent"
              x:Class="TotvsPrevent.Views.Finaceiro.PeriodoPage" Title="{Binding Titulo}"
              x:Name="PeriodoPageView">
-    <ContentPage.BindingContext>
-        <viewModels:ContaApagarViewModel/>
-    </ContentPage.BindingContext>
+   
     <ContentPage.Resources>
     <ResourceDictionary>
             <Style x:Key="FrameOptions" TargetType="Frame">

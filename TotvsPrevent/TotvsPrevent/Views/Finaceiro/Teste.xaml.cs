@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TotvsPrevent.Models;
-using TotvsPrevent.ViewModels.Finaceiro.ContaApagarDetalhe;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,11 +15,11 @@ namespace TotvsPrevent.Views.Finaceiro
     public partial class Teste : ContentPage
     {
         public ICommand NavigateCommand { private set; get; }
-        public Teste(IEnumerable<DetalheContaAPagarViewModel> detalhes, string empresa)
+        public Teste(List<Dados> detalhes, string empresa)
         {
             InitializeComponent();
             labelEmpresa.Text = empresa;
-            LisViewDetalheFornecedor.ItemsSource = new ObservableCollection<DetalheContaAPagarViewModel>(detalhes);
+            LisViewDetalheFornecedor.ItemsSource = new ObservableCollection<Dados>(detalhes);
         }
 
 
