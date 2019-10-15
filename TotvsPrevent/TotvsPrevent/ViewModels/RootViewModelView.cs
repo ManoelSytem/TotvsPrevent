@@ -45,9 +45,9 @@ namespace TotvsPrevent.ViewModels
             set { this.SetValue(ref dado, value); }
         }
 
-        private List<Dados> dados;
+        private ObservableCollection<Dados> dados;
 
-        public List<Dados> Dados
+        public ObservableCollection<Dados> Dados
         {
             get { return this.dados; }
             set { this.SetValue(ref dados, value); }
@@ -126,7 +126,7 @@ namespace TotvsPrevent.ViewModels
 
             this.ContaApagar = new ObservableCollection<Root>(ListRoot);
             this.Titulo = list.titulo.ToString();
-            this.Dados = new List<Dados>(list.dados);
+            this.Dados = new ObservableCollection<Dados>(list.dados);
 
             this.Filtros = new ObservableCollection<string>(list.fitros.valores);
             this.IsRefreshing = false;

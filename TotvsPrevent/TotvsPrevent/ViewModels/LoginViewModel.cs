@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using TotvsPrevent.Helpers;
 using TotvsPrevent.Views.RM;
 using Newtonsoft.Json;
+using TotvsPrevent.Views.Finaceiro;
 
 namespace TotvsPrevent.ViewModels
 {
@@ -93,8 +94,7 @@ namespace TotvsPrevent.ViewModels
             var connection = await this.apiService.CheckConnection();
             if (!connection.IsSuccess)
             {
-                this.IsRunning = false;
-                this.IsEnabled = true;
+               
                 await Application.Current.MainPage.DisplayAlert("Mensagem", connection.Message, "Ok");
                 return;
             }
@@ -160,9 +160,9 @@ namespace TotvsPrevent.ViewModels
 
                 if (produtoSelect  == "Protheus")
                 {
-                    this.IsRunning = false;
-                    this.IsEnabled = true;
-                    Application.Current.MainPage = new MainPage();
+                 this.IsRunning = false;
+                 this.IsEnabled = true;
+                await Application.Current.MainPage.Navigation.PushAsync(new FinaceiraViewPage());
 
                 }
                 else if (produtoSelect == "RM")

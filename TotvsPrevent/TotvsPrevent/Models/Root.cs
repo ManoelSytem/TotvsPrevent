@@ -31,6 +31,7 @@ namespace TotvsPrevent.Models
         public string vencimento { get; set; }
         public string fornloja { get; set; }
         public string prefixo { get; set; }
+      
 
 
     }

@@ -42,7 +42,7 @@
                 Grid.Row="1"    
                 Padding="48, 0">
                 <flv:FlowListView
-                    FlowItemsSource="{Binding Filtros}"
+                    FlowItemsSource="{Binding Dados}"
                     BackgroundColor="#181818"
                     FlowColumnCount="2" 
                     FlowColumnExpand="First"
@@ -65,7 +65,7 @@
                         >
                                     <Label 
                                         x:Name="labelPeriodo"
-                                 Text="{Binding}"
+                                 Text="{Binding id}"
                                 FontSize="Small"
                                 HorizontalTextAlignment="Center"
                                 Margin="10,0"
@@ -74,7 +74,7 @@
                                 </StackLayout>
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding ObterRootRaiz, Source={x:Reference PeriodoPageView}}" 
-                                     CommandParameter="{Binding .}" />
+                                     CommandParameter="{Binding urlFilhos}" />
                                 </Frame.GestureRecognizers>
                             </Frame>
                         </DataTemplate>

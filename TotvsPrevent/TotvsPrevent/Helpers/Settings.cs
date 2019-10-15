@@ -22,7 +22,10 @@ namespace TotvsPrevent.Helpers
         private const string isRemembered = "IsRemembered";
         private const string username = "Username";
         private const string password = "Password";
+        private const string contador = "Contador";
+
         private static readonly string SettingsDefault = string.Empty;
+        private static readonly int SettingsDefaultInt = 0;
 
         #endregion
         public static string Username
@@ -34,6 +37,18 @@ namespace TotvsPrevent.Helpers
             set
             {
                 AppSettings.AddOrUpdateValue(username, value);
+            }
+        }
+
+        public static int Contador
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(contador, SettingsDefaultInt);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue(contador, value);
             }
         }
         public static string Password
