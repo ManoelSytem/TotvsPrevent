@@ -23,7 +23,7 @@ namespace TotvsPrevent.Views.Finaceiro
         {
            
             InitializeComponent();
-            BindingContext = new RootViewModel(_func.Nome);
+            BindingContext = new RootViewModel(_func.Nome); ;
             this.func = _func;
 
             try
@@ -37,7 +37,6 @@ namespace TotvsPrevent.Views.Finaceiro
                   {
                       RootService rootService = new RootService();
                       var response = await rootService.GetAllUrl(urlFilhos);
-
                       var list = (Root)response.Result;
                       List<Dados> listDados = new List<Dados>();
                       if (list != null)

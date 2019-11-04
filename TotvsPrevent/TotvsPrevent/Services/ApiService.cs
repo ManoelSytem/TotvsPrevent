@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TotvsPrevent.Models;
 using System.Net.Http.Headers;
+using ModernHttpClient;
 
 namespace TotvsPrevent.Services
 {
@@ -24,7 +25,7 @@ namespace TotvsPrevent.Services
                 };
             }
 
-            var isReachable = await CrossConnectivity.Current.IsRemoteReachable("10.120.8.16",2504,500000);
+            var isReachable = await CrossConnectivity.Current.IsRemoteReachable("10.120.8.16",2504, 5000);
             if (!isReachable)
             {
                 return new Response
@@ -67,11 +68,8 @@ namespace TotvsPrevent.Services
         {
             try
             {
-                HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri(urlBase);
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", acessToken);
-
-                var url = $"{preFix}{controller}{action}";
+                var client = new HttpClient();
+                var url = $"{urlBase}{preFix}{controller}{action}";
                 var response = await client.GetAsync(url);
                 var answer = await response.Content.ReadAsStringAsync();
                

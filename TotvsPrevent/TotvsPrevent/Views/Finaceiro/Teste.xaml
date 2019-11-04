@@ -39,7 +39,7 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout   Margin="2">
-                            <Grid Margin="0,0,0,0" Padding="10">
+                        <Grid x:Name="gridLayout" Margin="0,0,0,0" Padding="10">
                                 <Grid.RowDefinitions>
                                     <RowDefinition/>
                             </Grid.RowDefinitions>

@@ -73,7 +73,7 @@ namespace TotvsPrevent.ViewModels
         }
         public RootViewModel(string _service)
         {
-            RootService = new RootService();
+            var dados = this.Filtros;
             apiService = new ApiService();
             this.service = _service;
             LoadContaApagar();
@@ -83,6 +83,7 @@ namespace TotvsPrevent.ViewModels
 
         private async void LoadContaApagar()
         {
+            RootService RootService = new RootService();
             this.IsRefreshing = true;
 
             var connection = await this.apiService.CheckConnection();
@@ -92,7 +93,7 @@ namespace TotvsPrevent.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Mensagem", connection.Message, "Ok");
                 return;
             }
-           
+
             if (this.service == "Contas a receber")
             {   
                 this.url = Application.Current.Resources["UrlAPI"].ToString();
@@ -107,15 +108,13 @@ namespace TotvsPrevent.ViewModels
                 this.prefixControl = Application.Current.Resources["UrlPrefixControllerContaApagar"].ToString();
                 this.action = "emp=99&fil=01";
             }
-      
-            
-            var response = await this.RootService.GetAll(this.url,this.urlPrefix, this.prefixControl,this.action);
 
-            
+            var response = await RootService.GetAll(this.url,this.urlPrefix, this.prefixControl,this.action);
+            var test = await RootService.GetAll(this.url, this.urlPrefix, this.prefixControl, this.action);
+
             var list = (Root)response.Result;
             List<Root> ListRoot = new List<Root>();
             ListRoot.Add(list);
-
 
             if (!response.IsSuccess)
             {
@@ -129,6 +128,7 @@ namespace TotvsPrevent.ViewModels
             this.Dados = new ObservableCollection<Dados>(list.dados);
 
             this.Filtros = new ObservableCollection<string>(list.fitros.valores);
+
             this.IsRefreshing = false;
         }
 

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TotvsPrevent.Views.TesteCodBind">
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="iOS" Value="0, 20, 0, 0" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ListView x:Name="LisViewDetalheFornecedor" 
+           HasUnevenRows="True"
+           BackgroundColor="#ecf0f1"
+           IsRefreshing="{Binding IsRefreshing}"
+           IsPullToRefreshEnabled="True"
+           RefreshCommand="{Binding RefreshCommand}" >
+        <ListView.Header>
+            <Grid BackgroundColor="Red">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                </Grid.RowDefinitions>
+                <Image BackgroundColor="#215197"  Margin="2" Aspect="Fill" HeightRequest="200" VerticalOptions="StartAndExpand"/>
+                <StackLayout  Orientation="Horizontal" Spacing="10" HorizontalOptions="Start" VerticalOptions="Start" Margin="10,25">
+                    <Label Text="Bahia, Salvador" FontSize="16" VerticalOptions="Center" TextColor="White"/>
+                </StackLayout>
+                <StackLayout  Orientation="Vertical" Margin="0,15" HorizontalOptions="Center" VerticalOptions="Center">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label x:Name="labelEmpresa" Text="" TextColor="White" FontSize="20" FontAttributes="Bold" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Label x:Name="lblperiodo" Text="Agosto 02, 09:03 AM" TextColor="White" FontSize="12" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Grid>
+        </ListView.Header>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout   Margin="2">
+                        <Grid x:Name="gridLayout" Margin="0,0,0,0" Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Frame Padding="0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout  Orientation="Vertical"  Grid.Column="0" Padding="10">
+                                        <Label  x:Name="Natureza" Text="{Binding natureza, StringFormat='Natureza : {0}'}"
+                                   HorizontalTextAlignment="Start" FontSize="Small" TextColor="#1a73e8"/>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="Total" FontSize="Small"/>
+                                                        <Span Text="{Binding total,  StringFormat=' : R$ {0:C2}'}" FontSize="Small" FontAttributes="Bold" />
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="fornloja" FontSize="Small"/>
+                                                        <Span Text="{Binding fornloja}" FontSize="Small" TextColor="#1a73e8" />
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="Fornecedor" FontSize="Small"/>
+                                                        <Span Text="{Binding fornecedor}" FontSize="Small" TextColor="#1a73e8" />
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical" Grid.Column="1" Padding="10">
+                                        <Label Text="Código Natureza" 
+                                              HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>
+                                        <Label Text="{Binding natcod}" 
+                                              HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Text="forncod" 
+                                              HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>
+                                        <Label Text="{Binding forncod}" 
+                                              HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

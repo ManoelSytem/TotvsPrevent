@@ -23,6 +23,7 @@
   <ItemGroup>
     <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
     <PackageReference Include="DocumentFormat.OpenXml" Version="2.9.1" />
+    <PackageReference Include="modernhttpclient" Version="2.4.2" />
     <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="System.ServiceModel.Duplex" Version="4.4.*" />
@@ -108,6 +109,9 @@
     <EmbeddedResource Update="Views\RM\RmHomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\TesteCodBind.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -116,6 +120,5 @@
 
   <ItemGroup>
     <Folder Include="Connected Services\" />
-    <Folder Include="ViewModels\Finaceiro\" />
   </ItemGroup>
 </Project>

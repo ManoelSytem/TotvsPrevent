@@ -26,8 +26,6 @@ namespace TotvsPrevent.Views.Finaceiro
 
         }
 
-
-
         private async void FuncionalidadeSelected(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as Funcionalidade;
@@ -43,6 +41,7 @@ namespace TotvsPrevent.Views.Finaceiro
                 await Navigation.PushAsync(new PeriodoPage(item));
                 ((ListView)sender).SelectedItem = null;
             }
+            ((ListView)sender).SelectedItem = null;
         }
     }
 }

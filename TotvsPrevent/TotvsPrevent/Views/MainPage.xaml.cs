@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using TotvsPrevent.Services;
 using TotvsPrevent.Helpers;
 using TotvsPrevent.Views.RM;
+using TotvsPrevent.Views.Finaceiro;
 
 namespace TotvsPrevent.Views
 {
@@ -20,11 +21,11 @@ namespace TotvsPrevent.Views
         {
             InitializeComponent();
             ImgbackMenu.Source = ImageSource.FromResource("TotvsPrevent.Resource.backMenu.png");
-            _menuLista = ItemService.GetMenuItens(Settings.Produto);
+            _menuLista = ItemService.GetMenuItens("Protheus");
             navigationDrawerList.ItemsSource = _menuLista;
             ImgCicle.Source = ImageSource.FromResource("TotvsPrevent.Resource.perfil_icon.png");
             //if(Settings.Produto == "Protheus")
-            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(HomePageMaster)));
+            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(FinaceiraViewPage)));
             //else
             //Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(RmHomePage)));
         }

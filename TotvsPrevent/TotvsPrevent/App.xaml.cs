@@ -1,14 +1,11 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 using TotvsPrevent.Services;
 using TotvsPrevent.Views;
 using TotvsPrevent.Helpers;
-using TotvsPrevent.Views.Finaceiro;
-using System.Diagnostics;
 using System.Net.Http;
 using TotvsPrevent.Models;
 using Newtonsoft.Json;
+using TotvsPrevent.Views.Finaceiro;
 
 namespace TotvsPrevent
 {
@@ -26,7 +23,8 @@ namespace TotvsPrevent
             //{
             //    MainPage = new NavigationPage(new LoginPage());
             //}
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new NavigationPage(new FinaceiraViewPage());
+           // MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()
