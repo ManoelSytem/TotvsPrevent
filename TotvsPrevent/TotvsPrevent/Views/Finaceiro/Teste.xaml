@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="TotvsPrevent.Views.Finaceiro.Teste">
+             x:Class="TotvsPrevent.Views.Finaceiro.Teste" >
 
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
@@ -66,7 +66,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <FormattedString.Spans>
-                                                        <Span Text="fornloja" FontSize="Small"/>
+                                                        <Span Text="Fornloja : " FontSize="Small"/>
                                                         <Span Text="{Binding fornloja}" FontSize="Small" TextColor="#1a73e8" />
                                                     </FormattedString.Spans>
                                                 </FormattedString>
@@ -76,15 +76,15 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <FormattedString.Spans>
-                                                        <Span Text="Fornecedor" FontSize="Small"/>
+                                                        <Span Text="Fornecedor: " FontSize="Small"/>
                                                         <Span Text="{Binding fornecedor}" FontSize="Small" TextColor="#1a73e8" />
                                                     </FormattedString.Spans>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
                                     </StackLayout>
-                                        <StackLayout Orientation="Vertical" Grid.Column="1" Padding="10">
-                                             <Label Text="Código Natureza" 
+                                        <StackLayout  Orientation="Vertical" Grid.Column="1" Padding="10">
+                                             <Label Text="Código Natureza: " 
                                               HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>
                                             <Label Text="{Binding natcod}" 
                                               HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>
@@ -96,7 +96,7 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                        <Label Text="forncod" 
+                                        <Label Text="Forncod : " 
                                               HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>
                                         <Label Text="{Binding forncod}" 
                                               HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>

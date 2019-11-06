@@ -48,7 +48,7 @@ namespace TotvsPrevent.Services
             {
                 var client = new HttpClient();
 
-                var objeto = new { username = user , password = senha  };
+                var objeto = new { email = user.ToUpper() , password = senha };
 
                 var jsonObjeto = JsonConvert.SerializeObject(objeto);
 

@@ -115,35 +115,26 @@ namespace TotvsPrevent.ViewModels
                 return;
             }
 
+            HttpResponseMessage result = new HttpResponseMessage();
 
-            if (!(this.Username == "totvs" || this.Password == "fabrica"))
+            var url = Application.Current.Resources["UrlAPIAutentication"].ToString();
+
+            result = await this.apiService.GetToken(url, this.Username, this.Password);
+
+            var resultObjeto = result.Content.ReadAsStringAsync().Result;
+
+            Cliente cliente = JsonConvert.DeserializeObject<Cliente>(resultObjeto);
+
+            if (!result.IsSuccessStatusCode || string.IsNullOrEmpty(cliente.token))
             {
-                await Application.Current.MainPage.DisplayAlert("Mensagem", "Usuário e senha  incorretos!.", "Ok");
-                this.IsEnabled = true;
                 this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert("Mensagem", "Credênciais não corresponde! Atenção para realizar login conecte a rede TOTVSBA.", "Ok");
                 return;
             }
-
-            //HttpResponseMessage result = new HttpResponseMessage();
-
-            //var url = Application.Current.Resources["UrlAPIAutentication"].ToString();
-
-            //result = await this.apiService.GetToken(url, this.Username, this.Password);
-
-            //var resultObjeto = result.Content.ReadAsStringAsync().Result;
-
-            //Cliente cliente = JsonConvert.DeserializeObject<Cliente>(resultObjeto);
-
-            //if (!result.IsSuccessStatusCode || string.IsNullOrEmpty(cliente.token))
-            //{
-            //    this.IsRunning = false;
-            //    this.IsEnabled = true;
-            //    await Application.Current.MainPage.DisplayAlert("Mensagem", "Credênciais não corresponde! Atenção para realizar login conecte a rede TOTVSBA.", "Ok");
-            //    return;
-            //}
-            //else
-            //{
-            if (this.IsRemembered == true)
+            else
+            {
+                if (this.IsRemembered == true)
                 {
                     //Settings.Produto = produtoSelect.Nome;
                     //Settings.AccessToken = cliente.token;
@@ -171,8 +162,8 @@ namespace TotvsPrevent.ViewModels
                     this.IsEnabled = true;
                     Application.Current.MainPage = new MainPage();
                 }
-            //}
         }
+    }
 
     }
 }

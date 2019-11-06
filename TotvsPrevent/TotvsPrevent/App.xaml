@@ -8,7 +8,7 @@
 
     <Application.Resources>
         <ResourceDictionary>
-            <x:String x:Key="UrlAPIAutentication">http://10.120.8.16:2504/users/authenticate</x:String>
+            <x:String x:Key="UrlAPIAutentication">http://10.120.8.16:2504/api/usuarios/login</x:String>
             <x:String x:Key="UrlAPI">http://10.120.8.16:2529</x:String>
             <x:String x:Key="UrlPrefix">/rest</x:String>
             <x:String x:Key="UrlPrefixControllerContaApagar">/FWEBSA003?</x:String>

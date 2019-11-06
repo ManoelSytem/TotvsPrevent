@@ -43,13 +43,12 @@ namespace TotvsPrevent.Views.Finaceiro
                       {
                           string natureza = "";
                           string periodo = "";
-                          bool UrlFilho = false;
                           List<Dados> dadosFiltro = new List<Dados>();
                           foreach (Dados dado in list.dados)
                           {
                               decimal total = Convert.ToDecimal(dado.total);
                               dado.total = total.ToString("N2");
-                              periodo = dado.periodo;
+                              periodo = dado.id;
                               dadosFiltro.Add(dado);
                               dadosFiltro.Add(dado);
                           }

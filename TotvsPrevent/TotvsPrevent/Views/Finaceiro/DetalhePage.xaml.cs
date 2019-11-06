@@ -15,12 +15,13 @@ namespace TotvsPrevent.Views.Finaceiro
     public partial class DetalhePage : ContentPage
     {
        
-        public DetalhePage(List<Dados> detalhes, string empresa, string perioado)
+        public DetalhePage(List<Dados> detalhes, string empresa, string perioado, string titulo)
         {
             InitializeComponent();
             DateTime dia = DateTime.Now;
             CultureInfo idioma = new CultureInfo("pt-BR");
             lblperiodo.Text = perioado;
+            this.Title = titulo;
             LisViewDetalheFornecedor.ItemsSource = new ObservableCollection<Dados>(detalhes);
         }
     }

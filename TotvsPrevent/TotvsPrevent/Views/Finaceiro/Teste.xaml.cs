@@ -17,7 +17,6 @@ namespace TotvsPrevent.Views.Finaceiro
     public partial class Teste : ContentPage
     {
 
-        
         public ICommand NavigateCommand { private set; get; }
         public Teste(List<Dados> detalhes, string empresa, string perioado)
         {
@@ -26,7 +25,8 @@ namespace TotvsPrevent.Views.Finaceiro
            CultureInfo idioma = new CultureInfo("pt-BR");
            labelEmpresa.Text = "Natureza";
            lblperiodo.Text = perioado;
-           LisViewDetalheFornecedor.ItemsSource = new ObservableCollection<Dados>(detalhes);
+          
+          LisViewDetalheFornecedor.ItemsSource = new ObservableCollection<Dados>(detalhes);
         }
 
         private  async void SelectItemDetalhe(object sender, ItemTappedEventArgs e)
@@ -45,7 +45,8 @@ namespace TotvsPrevent.Views.Finaceiro
                     var response = await rootService.GetAllUrl(item.urlFilhos);
 
                     var list = (Root)response.Result;
-                    List<Dados> listDados = new List<Dados>();
+                    this.Title = list.titulo;
+                   List <Dados> listDados = new List<Dados>();
                     if (list != null)
                     {
                         string fornecedor = "";
@@ -70,7 +71,7 @@ namespace TotvsPrevent.Views.Finaceiro
                         }
                         else
                         {
-                            await Navigation.PushAsync(new DetalhePage(dadosFiltro, fornecedor, periodo));
+                            await Navigation.PushAsync(new DetalhePage(dadosFiltro, fornecedor, periodo,this.Title));
                         }
 
                         ((ListView)sender).SelectedItem = null;

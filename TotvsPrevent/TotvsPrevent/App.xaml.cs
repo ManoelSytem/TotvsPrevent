@@ -23,7 +23,7 @@ namespace TotvsPrevent
             //{
             //    MainPage = new NavigationPage(new LoginPage());
             //}
-            MainPage = new NavigationPage(new FinaceiraViewPage());
+            MainPage = new NavigationPage(new LoginPage());
            // MainPage = new NavigationPage(new LoginPage());
         }
 
@@ -54,11 +54,11 @@ namespace TotvsPrevent
                 return;
             }
 
-            HttpResponseMessage result = new HttpResponseMessage();
+           
 
             var url = Application.Current.Resources["UrlAPIAutentication"].ToString();
 
-            result = await this.apiService.GetToken(url, username, password);
+            var result = await this.apiService.GetToken(url, username, password);
 
             var resultObjeto = result.Content.ReadAsStringAsync().Result;
 

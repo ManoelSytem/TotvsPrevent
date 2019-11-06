@@ -61,7 +61,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <FormattedString.Spans>
-                                                        <Span Text="vencimento :" FontSize="Small"/>
+                                                        <Span Text="Vencimento :" FontSize="Small"/>
                                                         <Span Text="{Binding vencimento}" FontSize="Small" TextColor="#1a73e8" />
                                                     </FormattedString.Spans>
                                                 </FormattedString>
@@ -79,7 +79,7 @@
                                         </Label>
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical" Grid.Column="1" Padding="10">
-                                        <Label Text="titulo :" 
+                                        <Label Text="Titulo :" 
                                               HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>
                                         <Label Text="{Binding titulo}" 
                                               HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>
@@ -91,7 +91,7 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <Label Text="parcela :" 
+                                        <Label Text="Parcela :" 
                                               HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>
                                         <Label Text="{Binding parcela}" 
                                               HorizontalTextAlignment="Start" FontSize="Small" TextColor="Black"/>

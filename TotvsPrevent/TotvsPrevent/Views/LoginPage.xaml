@@ -34,7 +34,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Image Source="logo.png" HeightRequest="70" VerticalOptions="EndAndExpand"/>
-                <Entry Text="{Binding Username}" x:Name="Entry_Login"  Grid.Row="1" Placeholder="login" PlaceholderColor="#bababa" FontSize="16"/>
+                <Entry Text="{Binding Username}" x:Name="Entry_Login"  Grid.Row="1" Placeholder="email" PlaceholderColor="#bababa" FontSize="16"/>
                 <Entry  Text="{Binding Password}" x:Name="Entry_Senha"  IsPassword="true" Grid.Row="2" Placeholder="Password" PlaceholderColor="#bababa" FontSize="16"/>
                 <Label Text="Lembre me:" HorizontalOptions="Start" Grid.Row="3" Margin="0,10,0,0" FontSize="12"/>
                 <StackLayout Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Center">
